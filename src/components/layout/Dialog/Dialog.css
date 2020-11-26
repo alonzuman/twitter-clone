@@ -14,5 +14,6 @@
 .dialog__container {
   background-color: var(--bg-00);
   border-radius: 16px;
+  margin: 16px;
   margin-top: 32px;
 }
