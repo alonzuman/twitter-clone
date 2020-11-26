@@ -1,10 +1,11 @@
 import React from 'react';
 import TweetCard from '../../cards/TweetCard/TweetCard';
+import Spinner from '../../loaders/Spinner/Spinner';
 import './TweetsList.css';
 
 const TweetsList = ({ isLoading, tweets }) => {
   if (isLoading) {
-    return <h1>Loading...</h1>
+    return <Spinner size='md' />
   }
 
   return (

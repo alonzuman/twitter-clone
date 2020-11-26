@@ -3,6 +3,7 @@
   border-left: 1px solid var(--border-01);
   border-right: 1px solid var(--border-01);
   min-height: 100vh;
+  max-width: 512px;
 }
 
 .feed__header {
