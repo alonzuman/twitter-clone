@@ -33,7 +33,7 @@ const TweetsProvider = ({ children }) => {
     dispatch({
       type: IS_FETCHING
     })
-    await Tweets.onSnapshot(snapshot => {
+    await Tweets.orderBy('createdAt', 'desc').onSnapshot(snapshot => {
       const data = snapshot.docs.map(doc => {
         return { id: doc.id, ...doc.data() }
       });
