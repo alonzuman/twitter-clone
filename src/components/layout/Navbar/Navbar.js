@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { Suspense, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import AddIcon from '../../../assets/icons/AddIcon';
 import HomeIcon from '../../../assets/icons/HomeIcon';
@@ -6,6 +6,7 @@ import MoreIcon from '../../../assets/icons/MoreIcon';
 import NotificationsIcon from '../../../assets/icons/NotificationsIcon';
 import ProfileIcon from '../../../assets/icons/ProfileIcon';
 import TwitterIcon from '../../../assets/icons/TwitterIcon';
+import { AuthContext } from '../../../contexts/AuthContext';
 import { ThemeContext } from '../../../contexts/ThemeContext';
 import { TweetsContext } from '../../../contexts/TweetsContext';
 import useWindowSize from '../../../hooks/useWindowSize';
@@ -16,7 +17,8 @@ import NavbarItem from './NavbarItem';
 import NavbarPopper from './NavbarPopper';
 
 const Navbar = () => {
-  const { setIsAdding } = useContext(TweetsContext);
+  const { isAuth } = useContext(AuthContext);
+  const { openDialog } = useContext(TweetsContext);
   const { toggleTheme } = useContext(ThemeContext);
   const { width } = useWindowSize();
 
@@ -27,24 +29,26 @@ const Navbar = () => {
     { label: 'More', selectedIcon: <MoreIcon size={28} color='nav__icon' />, icon: <MoreIcon size={28} className='nav__icon' />, onClick: toggleTheme },
   ]
 
-  if (width > 500) {
+  if (width > 500 && isAuth) {
     return (
-      <nav role="nav" className="nav__wrapper">
-        <div className="nav__container">
-          <ul className="nav__menu">
-            <Link className="nav__twitterIconWrapper" to='/'>
-              <IconButton size='md' className="nav__twitterIcon">
-                <TwitterIcon size={28} color="var(--primary-main)" />
-              </IconButton>
-            </Link>
-            {menu.map(({ label, path, icon, onClick }) => <NavbarItem label={label} icon={icon} onClick={onClick ? onClick : null} link={path} key={label} />)}
-            <PrimaryButton className="nav__tweetButton" size="lg" onClick={() => setIsAdding(true)}>
-              {width < 1024 ? <AddIcon /> : 'Tweet'}
-            </PrimaryButton>
-          </ul>
-          <NavbarPopper />
-        </div>
-      </nav>
+      <Suspense fallback={null}>
+        <nav role="nav" className="nav__wrapper">
+          <div className="nav__container">
+            <ul className="nav__menu">
+              <Link className="nav__twitterIconWrapper" to='/'>
+                <IconButton size='md' className="nav__twitterIcon">
+                  <TwitterIcon size={28} />
+                </IconButton>
+              </Link>
+              {menu.map(({ label, path, icon, onClick }) => <NavbarItem label={label} icon={icon} onClick={onClick ? onClick : null} link={path} key={label} />)}
+              <PrimaryButton className="nav__tweetButton" size="lg" onClick={openDialog}>
+                {width < 1024 ? <AddIcon /> : 'Tweet'}
+              </PrimaryButton>
+            </ul>
+            <NavbarPopper />
+          </div>
+        </nav>
+      </Suspense>
     )
   } else {
     return null;

@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 
 const Sidebar = () => {
   return (
-    <div role="side-bar" className='sideBar__wrapper'>
-      <div />
-    </div>
+    <Suspense fallback={null}>
+      <div role="side-bar" className='sideBar__wrapper'>
+        <div />
+      </div>
+    </Suspense>
   )
 }
 

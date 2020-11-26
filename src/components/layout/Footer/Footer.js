@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Suspense, useContext } from 'react';
 import HomeIcon from '../../../assets/icons/HomeIcon';
 import NotificationsIcon from '../../../assets/icons/NotificationsIcon';
 import ProfileIcon from '../../../assets/icons/ProfileIcon';
+import { AuthContext } from '../../../contexts/AuthContext';
 import useWindowSize from '../../../hooks/useWindowSize';
 import './Footer.css';
 import FooterItem from './FooterItem';
@@ -14,16 +15,19 @@ const menu = [
 ]
 
 const Footer = () => {
+  const { isAuth } = useContext(AuthContext);
   const { width } = useWindowSize();
 
-  if (width <= 500) {
+  if (width <= 500 && isAuth) {
     return (
-      <footer className='footer'>
-        <FooterTweetButton />
-        <ul className='footer__menu'>
-          {menu.map(({ label, icon, path }) => <FooterItem key={label} label={label} icon={icon} path={path} />)}
-        </ul>
-      </footer>
+      <Suspense fallback={null}>
+        <footer className='footer'>
+          <FooterTweetButton />
+          <ul className='footer__menu'>
+            {menu.map(({ label, icon, path }) => <FooterItem key={label} label={label} icon={icon} path={path} />)}
+          </ul>
+        </footer>
+      </Suspense>
     )
   } else {
     return null;

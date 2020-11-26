@@ -1,14 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { TweetsContext } from '../../../contexts/TweetsContext'
 import './Feed.css';
 import Tweet from '../Tweet/Tweet';
 import TweetsList from '../../lists/TweetsList/TweetsList';
 
 const Feed = () => {
-  const { tweets, fetchTweets, isFetching } = useContext(TweetsContext);
+  const { tweets, fetchTweets, isFetching, isFetched } = useContext(TweetsContext);
 
   useEffect(() => {
-    fetchTweets();
+    if (!isFetched) {
+      fetchTweets();
+    }
   }, [])
 
   return (

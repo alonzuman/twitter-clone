@@ -1,6 +1,7 @@
 .app__container {
   display: flex;
   min-height: 100vh;
+  justify-content: center;
 }
 
 .nav__wrapper {

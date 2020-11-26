@@ -25,6 +25,7 @@
 .nav__twitterIcon {
   margin-left: 8px;
   margin-bottom: 8px;
+  fill: var(--primary-main);
 }
 
 .nav__icon {

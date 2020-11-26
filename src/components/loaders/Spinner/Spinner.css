@@ -1,0 +1,39 @@
+.spinner__base {
+  border: 1px solid var(--primary-light-transparent);
+  border-top: 1px solid var(--primary-main);
+  border-radius: 50%;
+  animation: spinnerAnimation 1s linear infinite;
+  margin: 0 auto;
+}
+
+.spinner--xs {
+  height: 12px;
+  width: 12px;
+}
+
+.spinner--sm {
+  height: 16px;
+  width: 16px;
+}
+
+.spinner--md {
+  border-width: 2px;
+  height: 24px;
+  width: 24px;
+}
+
+.spinner--lg {
+  border-width: 2px;
+  height: 40px;
+  width: 40px;
+}
+
+@keyframes spinnerAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

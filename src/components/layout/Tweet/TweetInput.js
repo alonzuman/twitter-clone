@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import './TweetInput.css';
 
-const TweetInput = ({ autoFocus, rows = 2, content, setContent }) => {
+const TweetInput = ({ autoFocus, rows = 2, tweet, editTweet }) => {
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -17,8 +17,8 @@ const TweetInput = ({ autoFocus, rows = 2, content, setContent }) => {
         ref={inputRef}
         className="tweetInput__input"
         rows={rows}
-        value={content}
-        onChange={e => setContent(e.target.value)}
+        value={tweet.content}
+        onChange={editTweet}
       />
     </div>
   )

@@ -1,6 +1,9 @@
 .navbarPopper__container {
   width: 100%;
+}
 
+.navbarPopper__button {
+  width: 100%;
 }
 
 .navbarPopper__buttonText {

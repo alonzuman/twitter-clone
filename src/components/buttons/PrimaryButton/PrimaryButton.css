@@ -21,6 +21,11 @@
   outline: none;
 }
 
+.primaryButton__spinner {
+  border-color: #a2a2a2b9!important;
+  border-top-color: white!important;
+}
+
 .primaryButton--md {
   height: 40px;
   font-weight: 600;

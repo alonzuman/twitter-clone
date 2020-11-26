@@ -1,6 +1,6 @@
 .popper__container {
   position: fixed;
-  bottom: 64px;
+  bottom: 72px;
   left: 64px;
   background-color: var(--bg-00);
   padding: 32px;
