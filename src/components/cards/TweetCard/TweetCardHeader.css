@@ -1,0 +1,21 @@
+.tweetCard__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.tweetCard__displayName {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.tweetCard__username {
+  margin-left: 8px;
+  color: var(--text-light);
+}
+
+.tweetCard__header--icon {
+  fill: var(--text-light);
+}

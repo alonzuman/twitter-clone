@@ -1,0 +1,14 @@
+.tweetDialog__body {
+  margin-top: 4px;
+  display: flex;
+}
+
+.tweetDialog__input {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .tweetDialog__container {
+    min-width: 512px;
+  }
+}

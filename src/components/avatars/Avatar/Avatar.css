@@ -1,0 +1,27 @@
+.avatar__xs {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 32px;
+  width: 32px;
+}
+
+.avatar__sm {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 40px;
+  width: 40px;
+}
+
+.avatar__md {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 54px;
+  width: 54px;
+}
+
+.avatar__lg {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 60px;
+  width: 60px;
+}

@@ -1,0 +1,11 @@
+.popper__container {
+  position: fixed;
+  bottom: 64px;
+  left: 64px;
+  background-color: var(--bg-00);
+  padding: 32px;
+  box-shadow: 0px 4px 10px #00000055;
+  border-radius: 16px;
+}
+
+

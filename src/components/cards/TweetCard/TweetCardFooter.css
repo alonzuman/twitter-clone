@@ -1,0 +1,19 @@
+.tweetCardFooter {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.tweetCardFooter__likesCount {
+  padding-left: 8px;
+  padding-right: 8px;
+  color: var(--text-main);
+}
+
+.tweetCardFooter__icon {
+  fill: var(--text-light);
+}
+
+.tweetCardFooter__iconFilled {
+  fill: var(--red-main);
+}

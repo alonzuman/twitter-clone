@@ -1,0 +1,15 @@
+.footerTweetButton {
+  position: fixed;
+  bottom: 72px;
+  right: 16px;
+  height: 56px;
+  width: 56px;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerTweetButton__icon {
+  fill: #fff;
+}

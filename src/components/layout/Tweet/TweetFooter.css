@@ -1,0 +1,11 @@
+.tweetFooter__container {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-top: 1px solid var(--border-01);
+}
+
+.tweetFooter__button {
+  margin-right: 8px;
+}

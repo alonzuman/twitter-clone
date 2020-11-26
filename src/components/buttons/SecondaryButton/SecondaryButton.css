@@ -1,0 +1,37 @@
+.secondaryButton__base {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  border-radius: 64px;
+  transition: .15s ease-in-out background-color;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--text-main);
+}
+
+.secondaryButton__base:hover {
+  background-color: var(--primary-light-transparent);
+}
+
+.secondaryButton__base:focus {
+  outline: none;
+}
+
+.secondaryButton--md {
+  height: 40px;
+  font-weight: 600;
+  font-size: 1rem;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+.secondaryButton--xl {
+  height: 64px;
+  font-weight: 600;
+  font-size: 1rem;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+

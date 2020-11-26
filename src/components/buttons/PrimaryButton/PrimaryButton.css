@@ -1,0 +1,39 @@
+.primaryButton__base {
+  border: none;
+  border-radius: 64px;
+  background-color: var(--primary-main);
+  color: white;
+  transition: .15s ease-in-out background-color;
+  cursor: pointer;
+}
+
+.primaryButton__base:disabled,
+.primaryButton__base[disabled] {
+  opacity: .5;
+  cursor: default;
+}
+
+.primaryButton__base:hover {
+  background-color: var(--primary-dark);
+}
+
+.primaryButton__base:focus {
+  outline: none;
+}
+
+.primaryButton--md {
+  height: 40px;
+  font-weight: 600;
+  font-size: 1rem;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+.primaryButton--lg {
+  height: 48px;
+  font-weight: 600;
+  font-size: 1rem;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+

@@ -1,0 +1,6 @@
+.tweetCard__avatar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-right: 8px;
+}

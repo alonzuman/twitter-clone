@@ -1,0 +1,16 @@
+.tweet__container {
+  display: flex;
+  width: 100%;
+  background-color: var(--bg-00);
+  padding: 0 12px;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.tweet__input {
+  width: 100%;
+}
+
+.tweet__avatar {
+  padding: 8px 4px;
+}

@@ -1,0 +1,35 @@
+.iconButton__container {
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  transition: .15s ease-in-out background-color;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.iconButton--sm {
+  height: 32px;
+  width: 32px;
+}
+
+.iconButton--md {
+  height: 48px;
+  width: 48px;
+}
+
+.iconButton--lg {
+  height: 54px;
+  width: 54px;
+}
+
+.iconButton__container:hover {
+  background-color: var(--primary-light-transparent);
+}
+
+.iconButton__container:focus {
+  outline: none;
+}

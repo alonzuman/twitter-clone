@@ -1,0 +1,49 @@
+.navbarPopper__container {
+  width: 100%;
+
+}
+
+.navbarPopper__buttonText {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 8px;
+}
+
+.navbarPopper__buttonTitle {
+
+}
+
+.navbarPopper__buttonSubtitle {
+
+}
+
+.navbarPopper__buttonIcon {
+  fill: var(--text-main);
+}
+
+@media (max-width: 1024px) {
+  .navbarPopper__buttonText {
+    display: none;
+  }
+
+  .navbarPopper__buttonIcon {
+    display: none;
+  }
+
+  .navbarPopper__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+  }
+
+  .navbarPopper__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+

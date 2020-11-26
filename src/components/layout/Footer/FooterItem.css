@@ -1,0 +1,15 @@
+.footerItem__container {
+  list-style: none;
+}
+
+.footerItem__icon {
+  fill: inherit;
+}
+
+.footerItem__wrapper {
+  fill: var(--text-light);
+}
+
+.footerItem__wrapper--active {
+  fill: var(--primary-main);
+}
