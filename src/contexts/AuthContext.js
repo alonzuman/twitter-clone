@@ -10,7 +10,16 @@ const initialState = {
   isFetched: false,
   isUpdating: false,
   isUpdated: false,
-  user: {}
+  isAuth: false,
+  user: {
+    displayName: '',
+    username: '',
+    email: '',
+    emailVerified: '',
+    avatar: '',
+    followers: [],
+    following: []
+  }
 }
 
 export const AuthContext = createContext({});
@@ -31,7 +40,7 @@ const AuthProvider = ({ children }) => {
         })
       }
     })
-  }, [])
+  }, [auth.currentUser])
 
   const setUser = async (uid) => {
     Users.doc(uid).get().then(snapshot => {
@@ -84,14 +93,6 @@ const AuthProvider = ({ children }) => {
           following: [],
         },{ merge: true })
       }
-
-      dispatch({
-        type: SET_USER,
-        payload: {
-          uid: userSnapshot.id,
-          ...userSnapshot.data()
-        }
-      })
     }).catch(err => console.log(err))
   }
 

@@ -12,8 +12,6 @@ const Feed = () => {
     fetchTweets({ queryParams: {}, key: 'all' });
   }, [])
 
-  console.log(tweets)
-
   return (
     <div className='feed__container'>
       <Header title='Home' />
