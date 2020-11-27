@@ -3,6 +3,7 @@ import { TweetsContext } from '../../../contexts/TweetsContext'
 import './Feed.css';
 import Tweet from '../Tweet/Tweet';
 import TweetsList from '../../lists/TweetsList/TweetsList';
+import Header from '../Header/Header';
 
 const Feed = () => {
   const { tweets, fetchTweets, isFetching, isFetched } = useContext(TweetsContext);
@@ -15,9 +16,7 @@ const Feed = () => {
 
   return (
     <div className='feed__container'>
-      <header className="feed__header">
-        <h1 className="feed__title">Home</h1>
-      </header>
+      <Header title='Home'/>
       <div className="feed__tweet">
         <Tweet />
       </div>

@@ -1,0 +1,62 @@
+.profileHero__container {
+
+}
+
+.profileHero__banner {
+  height: 196px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.profileHero__body {
+  margin-top: -72px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+}
+
+.profileHero__avatar {
+  height: 132px;
+  width: 132px;
+  border: 3px solid var(--bg-00);
+}
+
+.profileHero__text {
+
+}
+
+.profileHero__displayName {
+  color: var(--text-main);
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.profileHero__username {
+  color: var(--text-light);
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+.profileHero__bioContainer {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.profileHero__bio {
+  color: var(--text-main);
+}
+
+.profileHero__followsContainer {
+  display: flex;
+}
+
+.profileHero__followsCounter {
+  color: var(--text-main);
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.profileHero__followsLabel {
+  color: var(--text-light);
+  margin-right: 24px;
+}

@@ -64,7 +64,15 @@ const AuthProvider = ({ children }) => {
 
       const userSnapshot = await Users.doc(uid).get();
       if (!userSnapshot.exists) {
-        await Users.doc(uid).set({ uid, displayName, email, photoURL: avatar, phoneNumber, emailVerified }, { merge: true })
+        await Users.doc(uid).set({
+          uid,
+          displayName,
+          username: displayName.split(' ').join('').toLocaleLowerCase(),
+          email,
+          photoURL: avatar,
+          phoneNumber,
+          emailVerified
+        },{ merge: true })
       }
 
       dispatch({

@@ -1,27 +1,29 @@
-.avatar__xs {
+.avatar__base {
   border-radius: 50%;
   object-fit: cover;
+}
+
+.avatar--xs {
   height: 32px;
   width: 32px;
 }
 
-.avatar__sm {
-  border-radius: 50%;
-  object-fit: cover;
+.avatar--sm {
   height: 40px;
   width: 40px;
 }
 
-.avatar__md {
-  border-radius: 50%;
-  object-fit: cover;
-  height: 54px;
-  width: 54px;
+.avatar--md {
+  height: 56px;
+  width: 56px;
 }
 
-.avatar__lg {
-  border-radius: 50%;
-  object-fit: cover;
+.avatar--lg {
   height: 60px;
   width: 60px;
+}
+
+.avatar--xl {
+  height: 96px;
+  width: 96px;
 }

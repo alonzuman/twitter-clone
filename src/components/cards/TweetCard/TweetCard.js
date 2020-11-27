@@ -11,7 +11,9 @@ const URL = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=
 const TweetCard = ({ tweet: { id, content, avatar = URL, displayName = 'Cupidatat', username = '@doloraute', createdAt, likes } }) => {
   return (
     <li className='tweetCard__container'>
-      <TweetCardAvatar src={avatar} alt={displayName} />
+      <Link to={`/users/${username}`}>
+        <TweetCardAvatar src={avatar} alt={displayName} />
+      </Link>
       <main className='tweetCard__main'>
         <TweetCardHeader id={id} displayName={displayName} username={username} />
         <Link className='tweetCard__link' to={`/tweets/${id}`}>

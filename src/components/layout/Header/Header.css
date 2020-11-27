@@ -1,0 +1,37 @@
+.header {
+  position: sticky;
+  background-color: var(--bg-00);
+  padding: 8px;
+  z-index: 9;
+  border-bottom: 1px solid var(--border-01);
+  top: 0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  min-height: 56px;
+}
+
+.header__text {
+  width: 100%;
+  margin-left: 8px;
+}
+
+.header__title {
+  color: var(--text-main);
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.header__subtitle {
+  color: var(--text-light);
+  font-size: .8rem;
+}
+
+.header__backButtonContainer {
+  margin-right: 16px;
+  margin-left: 8px;
+}
+
+.header__backButtonIcon {
+  fill: var(--text-main);
+}

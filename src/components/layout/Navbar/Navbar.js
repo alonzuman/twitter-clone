@@ -17,15 +17,15 @@ import NavbarItem from './NavbarItem';
 import NavbarPopper from './NavbarPopper';
 
 const Navbar = () => {
-  const { isAuth } = useContext(AuthContext);
+  const { isAuth, user: { username } } = useContext(AuthContext);
   const { openDialog } = useContext(TweetsContext);
   const { toggleTheme } = useContext(ThemeContext);
   const { width } = useWindowSize();
 
   const menu = [
     { label: 'Home', selectedIcon: <HomeIcon size={28} color='nav__icon' />, icon: <HomeIcon size={28} className='nav__icon' />, path: '/' },
-    { label: 'Explore', selectedIcon: <NotificationsIcon size={28} color='nav__icon' />, icon: <NotificationsIcon size={28} clasName='nav__icon' />, path: '/explore' },
-    { label: 'Profile', selectedIcon: <ProfileIcon size={28} color='nav__icon' />, icon: <ProfileIcon size={28} className='nav__icon' />, path: '/profile' },
+    // { label: 'Explore', selectedIcon: <NotificationsIcon size={28} color='nav__icon' />, icon: <NotificationsIcon size={28} clasName='nav__icon' />, path: '/explore' },
+    { label: 'Profile', selectedIcon: <ProfileIcon size={28} color='nav__icon' />, icon: <ProfileIcon size={28} className='nav__icon' />, path: `/users/${username}` },
     { label: 'More', selectedIcon: <MoreIcon size={28} color='nav__icon' />, icon: <MoreIcon size={28} className='nav__icon' />, onClick: toggleTheme },
   ]
 

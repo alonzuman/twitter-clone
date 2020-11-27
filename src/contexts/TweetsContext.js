@@ -26,14 +26,14 @@ const initialState = {
 export const TweetsContext = createContext({});
 
 const TweetsProvider = ({ children }) => {
-  const { user: { uid, displayName, avatar } } = useContext(AuthContext);
+  const { user: { uid, displayName, avatar, username } } = useContext(AuthContext);
   const [state, dispatch] = useReducer(tweetsReducer, initialState);
 
-  const fetchTweets = async () => {
+  const fetchTweets = () => {
     dispatch({
       type: IS_FETCHING
     })
-    await Tweets.orderBy('createdAt', 'desc').onSnapshot(snapshot => {
+    Tweets.orderBy('createdAt', 'desc').onSnapshot(snapshot => {
       const data = snapshot.docs.map(doc => {
         return { id: doc.id, ...doc.data() }
       });
@@ -60,7 +60,7 @@ const TweetsProvider = ({ children }) => {
     const { newTweet } = state;
     await Tweets.add({
       ...newTweet,
-
+      username,
       uid,
       displayName,
       avatar,

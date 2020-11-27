@@ -8,15 +8,15 @@ import './Footer.css';
 import FooterItem from './FooterItem';
 import FooterTweetButton from './FooterTweetButton';
 
-const menu = [
-  { label: 'Feed', icon: <HomeIcon size={24} />, path: '/' },
-  { label: 'Notifications', icon: <NotificationsIcon size={24} />, path: '/notifications' },
-  { label: 'Profile', icon: <ProfileIcon size={24} />, path: '/profile' },
-]
-
 const Footer = () => {
-  const { isAuth } = useContext(AuthContext);
+  const { isAuth, user: { username } } = useContext(AuthContext);
   const { width } = useWindowSize();
+
+  const menu = [
+    { label: 'Feed', icon: <HomeIcon size={24} />, path: '/' },
+    { label: 'Notifications', icon: <NotificationsIcon size={24} />, path: '/notifications' },
+    { label: 'Profile', icon: <ProfileIcon size={24} />, path: `/users/${username}` },
+  ]
 
   if (width <= 500 && isAuth) {
     return (

@@ -1,17 +1,8 @@
 import React from 'react';
 import './Avatar.css';
 
-const Avatar = ({ size = 'md', src, alt }) => {
-  const sizes = {
-    xs: 'avatar__xs',
-    sm: 'avatar__sm',
-    md: 'avatar__md',
-    lg: 'avatar__lg'
-  }
-
-  return (
-    <img src={src} alt={alt} className={sizes[size]} />
-  )
+const Avatar = ({ size = 'md', src, alt, className = '', ...rest }) => {
+  return <img src={src} alt={alt} className={`avatar__base avatar--${size} ${className}`} {...rest} />
 }
 
 export default Avatar
