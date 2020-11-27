@@ -1,7 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
+import { TweetsContext } from '../../../contexts/TweetsContext';
 import './TweetInput.css';
 
-const TweetInput = ({ autoFocus, rows = 2, tweet, editTweet }) => {
+const TweetInput = ({ autoFocus, rows = 2 }) => {
+  const { newTweet: tweet, editTweet } = useContext(TweetsContext);
   const inputRef = useRef(null);
 
   useEffect(() => {

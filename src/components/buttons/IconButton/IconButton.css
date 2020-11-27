@@ -33,3 +33,7 @@
 .iconButton__container:focus {
   outline: none;
 }
+
+.iconButton--red:hover {
+  background-color: var(--red-light-transparent);
+}

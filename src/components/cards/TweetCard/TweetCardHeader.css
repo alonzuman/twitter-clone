@@ -19,3 +19,13 @@
 .tweetCard__header--icon {
   fill: var(--text-light);
 }
+
+.tweetCard__seperator {
+  color: var(--text-light);
+  padding: 0 4px;
+}
+
+.tweetCard__timestamp {
+  color: var(--text-light);
+
+}

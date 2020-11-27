@@ -9,14 +9,12 @@ const Feed = () => {
   const { tweets, fetchTweets, isFetching, isFetched } = useContext(TweetsContext);
 
   useEffect(() => {
-    if (!isFetched) {
-      fetchTweets();
-    }
+    fetchTweets({ queryParams: {} });
   }, [])
 
   return (
     <div className='feed__container'>
-      <Header title='Home'/>
+      <Header title='Home' />
       <div className="feed__tweet">
         <Tweet />
       </div>

@@ -1,0 +1,27 @@
+.skeleton__base {
+  background-color: var(--border-02);
+  border-radius: 4px;
+  animation: skeletonAnimation 2s infinite;
+}
+
+.skeleton__base:last-of-type {
+  margin-top: 2px;
+}
+
+.skeleton--circle {
+  border-radius: 50%;
+}
+
+@keyframes skeletonAnimation {
+  0% {
+    opacity: .05;
+  }
+
+  50% {
+    opacity: .25;
+  }
+
+  100% {
+    opacity: .05;
+  }
+}

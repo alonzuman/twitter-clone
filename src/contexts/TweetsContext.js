@@ -4,6 +4,7 @@ import React, { createContext, useContext, useEffect, useReducer, useState } fro
 import tweetsReducer, { IS_ADDING } from '../reducers/tweets';
 import { SET_TWEETS, IS_FETCHING, DIALOG_CLOSED, DIALOG_OPEN, EDIT_TWEET } from '../reducers/tweets';
 import { AuthContext } from './AuthContext';
+import { fetchCollectionOnce, listenToCollection } from '../hooks/firestore';
 const Tweets = db.collection('tweets');
 
 const initialState = {
@@ -26,21 +27,16 @@ const initialState = {
 export const TweetsContext = createContext({});
 
 const TweetsProvider = ({ children }) => {
-  const { user: { uid, displayName, avatar, username } } = useContext(AuthContext);
+  const { uid, user: { displayName, avatar, username } } = useContext(AuthContext);
   const [state, dispatch] = useReducer(tweetsReducer, initialState);
 
-  const fetchTweets = () => {
+  const fetchTweets = ({ queryParams }) => {
     dispatch({
       type: IS_FETCHING
     })
-    Tweets.orderBy('createdAt', 'desc').onSnapshot(snapshot => {
-      const data = snapshot.docs.map(doc => {
-        return { id: doc.id, ...doc.data() }
-      });
-      dispatch({
-        type: SET_TWEETS,
-        payload: data
-      })
+
+    listenToCollection({ queryParams, collection: 'tweets', action: dispatch, type: SET_TWEETS }).catch(err => {
+      console.log(err)
     })
   }
 
@@ -109,6 +105,12 @@ const TweetsProvider = ({ children }) => {
     unlikeTweet,
     ...state,
   }
+
+  // useEffect(() => {
+  //   if (process.env.NODE_ENV !== 'production') {
+  //     console.log('tweetsReducer change: ', state)
+  //   }
+  // }, [state])
 
   return (
     <TweetsContext.Provider value={value}>

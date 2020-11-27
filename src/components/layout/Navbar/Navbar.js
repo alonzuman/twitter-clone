@@ -1,4 +1,4 @@
-import React, { Suspense, useContext } from 'react';
+import React, { Suspense, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AddIcon from '../../../assets/icons/AddIcon';
 import HomeIcon from '../../../assets/icons/HomeIcon';
@@ -18,15 +18,15 @@ import NavbarPopper from './NavbarPopper';
 
 const Navbar = () => {
   const { isAuth, user: { username } } = useContext(AuthContext);
-  const { openDialog } = useContext(TweetsContext);
-  const { toggleTheme } = useContext(ThemeContext);
+  const { openDialog: openTweetDialog } = useContext(TweetsContext);
+  const { openDialog: openMoreDialog } = useContext(ThemeContext);
   const { width } = useWindowSize();
 
   const menu = [
     { label: 'Home', selectedIcon: <HomeIcon size={28} color='nav__icon' />, icon: <HomeIcon size={28} className='nav__icon' />, path: '/' },
     // { label: 'Explore', selectedIcon: <NotificationsIcon size={28} color='nav__icon' />, icon: <NotificationsIcon size={28} clasName='nav__icon' />, path: '/explore' },
     { label: 'Profile', selectedIcon: <ProfileIcon size={28} color='nav__icon' />, icon: <ProfileIcon size={28} className='nav__icon' />, path: `/users/${username}` },
-    { label: 'More', selectedIcon: <MoreIcon size={28} color='nav__icon' />, icon: <MoreIcon size={28} className='nav__icon' />, onClick: toggleTheme },
+    { label: 'More', selectedIcon: <MoreIcon size={28} color='nav__icon' />, icon: <MoreIcon size={28} className='nav__icon' />, onClick: openMoreDialog },
   ]
 
   if (width > 500 && isAuth) {
@@ -41,7 +41,7 @@ const Navbar = () => {
                 </IconButton>
               </Link>
               {menu.map(({ label, path, icon, onClick }) => <NavbarItem label={label} icon={icon} onClick={onClick ? onClick : null} link={path} key={label} />)}
-              <PrimaryButton className="nav__tweetButton" size="lg" onClick={openDialog}>
+              <PrimaryButton className="nav__tweetButton" size="lg" onClick={openTweetDialog}>
                 {width < 1024 ? <AddIcon /> : 'Tweet'}
               </PrimaryButton>
             </ul>

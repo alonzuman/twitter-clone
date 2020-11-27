@@ -15,7 +15,8 @@ const authReducer = (state, action) => {
     case SET_USER:
       return {
         ...state,
-        user: {...payload},
+        user: payload.user,
+        uid: payload.uid,
         isFetching: false,
         isFetched: true,
         isAuth: true

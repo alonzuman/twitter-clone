@@ -4,6 +4,7 @@ export const ThemeContext = createContext({});
 
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('');
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
 
   useEffect(() => {
     const currentTheme = localStorage.getItem('theme');
@@ -25,8 +26,14 @@ const ThemeProvider = ({ children }) => {
     setTheme(currentValue => currentValue === 'dark' ? 'light' : 'dark')
   }
 
+  const openDialog = () => setIsMoreOpen(true)
+  const closeDialog = () => setIsMoreOpen(false)
+
   const value = {
     theme,
+    isMoreOpen,
+    openDialog,
+    closeDialog,
     toggleTheme,
     setTheme
   }

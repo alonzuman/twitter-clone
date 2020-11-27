@@ -15,7 +15,7 @@ const TweetCard = ({ tweet: { id, content, avatar = URL, displayName = 'Cupidata
         <TweetCardAvatar src={avatar} alt={displayName} />
       </Link>
       <main className='tweetCard__main'>
-        <TweetCardHeader id={id} displayName={displayName} username={username} />
+        <TweetCardHeader id={id} displayName={displayName} username={username} createdAt={createdAt} />
         <Link className='tweetCard__link' to={`/tweets/${id}`}>
           <TweetCardBody content={content} />
         </Link>

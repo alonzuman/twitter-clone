@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useReducer } from 'react'
+import firebase from 'firebase';
 import { db } from '../firebase';
 import { IS_FETCHING } from '../reducers/auth';
 import usersReducer, { SET_ONE } from '../reducers/users';
@@ -6,7 +7,7 @@ const Users = db.collection('users');
 
 export const UsersContext = createContext({});
 
-const initialState = {
+export const initialState = {
   currentUser: {},
   users: [],
   isFetching: false,
@@ -20,7 +21,7 @@ const UsersProvider = ({ children }) => {
     dispatch({
       type: IS_FETCHING
     })
-    Users.where('username', '==', username).get().then(snapshot => {
+    Users.where('username', '==', username).onSnapshot(snapshot => {
       snapshot.forEach((doc, index) => {
         const data = { uid: doc.id, ...doc.data() }
         dispatch({
@@ -31,12 +32,28 @@ const UsersProvider = ({ children }) => {
     })
   }
 
-  useEffect(() => {
-    console.log(state);
-  }, [state])
+  const followUser = (followerId, followingId) => {
+    Users.doc(followingId).set({
+      followers: firebase.firestore.FieldValue.arrayUnion(followerId)
+    }, { merge: true })
+  }
+
+  const unfollowUser = (followerId, followingId) => {
+    Users.doc(followingId).set({
+      followers: firebase.firestore.FieldValue.arrayRemove(followerId)
+    }, { merge: true })
+  }
+
+  // useEffect(() => {
+  //   if (process.env.NODE_ENV !== 'production') {
+  //     console.log('usersReducer change: ', state);
+  //   }
+  // }, [state])
 
   const value = {
     fetchUserByUsername,
+    followUser,
+    unfollowUser,
     ...state
   }
 

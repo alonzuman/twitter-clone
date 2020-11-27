@@ -8,7 +8,6 @@ import TweetInput from './TweetInput';
 
 const Tweet = ({ autoFocus, rows }) => {
   const { user: { avatar, displayName } } = useContext(AuthContext);
-  const { newTweet, editTweet } = useContext(TweetsContext);
 
   return (
     <div className='tweet__container'>
@@ -16,7 +15,7 @@ const Tweet = ({ autoFocus, rows }) => {
         <Avatar size='sm' src={avatar} alt={displayName} />
       </div>
       <div className='tweet__input'>
-        <TweetInput autoFocus={autoFocus} tweet={newTweet} editTweet={editTweet} rows={rows} />
+        <TweetInput autoFocus={autoFocus} rows={rows} />
         <TweetFooter />
       </div>
     </div>

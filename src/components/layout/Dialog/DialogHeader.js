@@ -1,9 +1,9 @@
 import React from 'react';
 import CloseIcon from '../../../assets/icons/CloseIcon';
 import IconButton from '../../buttons/IconButton/IconButton';
-import './TweetDialogHeader.css';
+import './DialogHeader.css';
 
-const TweetDialogHeader = ({ onClose }) => {
+const DialogHeader = ({ onClose }) => {
   return (
     <header className='tweetDialog__header'>
       <IconButton onClick={onClose}>
@@ -13,4 +13,4 @@ const TweetDialogHeader = ({ onClose }) => {
   )
 }
 
-export default TweetDialogHeader
+export default DialogHeader

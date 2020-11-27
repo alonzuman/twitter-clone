@@ -1,3 +1,5 @@
+import { initialState } from "../contexts/UsersContext";
+
 export const IS_FETCHING = 'USERS/IS_FETCHING';
 export const SET_ALL = 'USERS/SET_ALL';
 export const SET_ONE = 'USERS/SET_ONE';

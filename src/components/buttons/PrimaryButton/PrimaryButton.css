@@ -5,6 +5,7 @@
   color: white;
   transition: .15s ease-in-out background-color;
   cursor: pointer;
+  border: 1px solid var(--primary-main);
 }
 
 .primaryButton__base:disabled,
@@ -42,3 +43,12 @@
   padding-left: 16px;
 }
 
+
+.primaryButton--outlined {
+  color: var(--primary-main);
+  background-color: transparent;
+}
+
+.primaryButton--outlined:hover {
+  background-color: var(--primary-light-transparent);
+}

@@ -12,12 +12,8 @@
   display: flex;
   padding: 8px 16px;
   border-top: 1px solid var(--border-01);
-  transition: .25s ease-in-out background-color;
+  transition: .25s ease-in-out background-color, .25s ease-in-out border;
   background-color: var(--bg-00);
-}
-
-.tweetCard__container:last-of-type {
-  border-bottom: 1px solid var(--border-01);
 }
 
 .tweetCard__container:hover {

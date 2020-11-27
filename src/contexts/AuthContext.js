@@ -31,18 +31,26 @@ const AuthProvider = ({ children }) => {
         })
       }
     })
-  }, [auth.currentUser])
+  }, [])
 
   const setUser = async (uid) => {
     Users.doc(uid).get().then(snapshot => {
-      const user = {
-        id: snapshot.id,
-        ...snapshot.data()
-      };
-      dispatch({
-        type: SET_USER,
-        payload: user
-      })
+      if (snapshot.exists) {
+        const user = {
+          uid: snapshot.id,
+          ...snapshot.data()
+        };
+
+        dispatch({
+          type: SET_USER,
+          payload: {
+            uid,
+            user
+          }
+        })
+      } else {
+        signOut()
+      }
     })
   }
 
@@ -67,11 +75,13 @@ const AuthProvider = ({ children }) => {
         await Users.doc(uid).set({
           uid,
           displayName,
-          username: displayName.split(' ').join('').toLocaleLowerCase(),
+          username: email.split('@')[0],
           email,
-          photoURL: avatar,
+          avatar,
           phoneNumber,
-          emailVerified
+          emailVerified,
+          followers: [],
+          following: [],
         },{ merge: true })
       }
 
@@ -91,6 +101,12 @@ const AuthProvider = ({ children }) => {
       type: SIGNED_OUT
     })
   }
+
+  // useEffect(() => {
+  //   if (process.env.NODE_ENV !== 'production') {
+  //     console.log(state)
+  //   }
+  // }, [state])
 
   const value = {
     signInWithProvider,

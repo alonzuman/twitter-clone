@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthContext';
+import MoreDialog from '../../menus/MoreDialog';
 import Auth from '../Auth/Auth';
 import Feed from '../Feed/Feed';
 import Footer from '../Footer/Footer';
@@ -28,6 +29,7 @@ const Router = () => {
     return (
       <BrowserRouter>
         <TweetDialog />
+        <MoreDialog isOpen />
         <div className="app__container">
           <Navbar />
           <Switch>
