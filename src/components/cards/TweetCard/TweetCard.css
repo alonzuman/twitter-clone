@@ -16,12 +16,14 @@
   background-color: var(--bg-00);
 }
 
-.tweetCard__container:hover {
-  background-color: var(--bg-01);
-}
-
 .tweetCard__main {
   display: flex;
   width: 100%;
   flex-direction: column;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tweetCard__container:hover {
+    background-color: var(--bg-01);
+  }
 }

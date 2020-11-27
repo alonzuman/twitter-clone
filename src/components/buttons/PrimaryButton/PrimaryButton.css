@@ -14,10 +14,6 @@
   cursor: default;
 }
 
-.primaryButton__base:hover {
-  background-color: var(--primary-dark);
-}
-
 .primaryButton__base:focus {
   outline: none;
 }
@@ -49,6 +45,12 @@
   background-color: transparent;
 }
 
-.primaryButton--outlined:hover {
-  background-color: var(--primary-light-transparent);
+@media (hover: hover) and (pointer: fine) {
+  .primaryButton__base:hover {
+    background-color: var(--primary-dark);
+  }
+
+  .primaryButton--outlined:hover {
+    background-color: var(--primary-light-transparent);
+  }
 }

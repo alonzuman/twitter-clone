@@ -26,14 +26,17 @@
   width: 54px;
 }
 
-.iconButton__container:hover {
-  background-color: var(--primary-light-transparent);
-}
-
 .iconButton__container:focus {
   outline: none;
 }
 
-.iconButton--red:hover {
-  background-color: var(--red-light-transparent);
+
+@media (hover: hover) and (pointer: fine) {
+  .iconButton__container:hover {
+    background-color: var(--primary-light-transparent);
+  }
+
+  .iconButton--red:hover {
+    background-color: var(--red-light-transparent);
+  }
 }

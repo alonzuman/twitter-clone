@@ -10,10 +10,6 @@
   color: var(--text-main);
 }
 
-.secondaryButton__base:hover {
-  background-color: var(--primary-light-transparent);
-}
-
 .secondaryButton__base:focus {
   outline: none;
 }
@@ -32,5 +28,11 @@
   font-size: 1rem;
   padding-right: 16px;
   padding-left: 16px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .secondaryButton__base:hover {
+    background-color: var(--primary-light-transparent);
+  }
 }
 
