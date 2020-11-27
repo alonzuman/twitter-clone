@@ -11,7 +11,7 @@ import ProfileHero from './ProfileHero/ProfileHero';
 const Profile = ({ match }) => {
   const { username } = match.params;
   const { fetchUserByUsername, currentUser, isFetching: fetchingUser, isFetched: fetchedUser } = useContext(UsersContext);
-  const { fetchTweets, tweets, isFetching: fetchingTweets, isFetched: fetchedTweets } = useContext(TweetsContext);
+  const { fetchTweets, tweets: { currentUser: tweets }, isFetching: fetchingTweets, isFetched: fetchedTweets } = useContext(TweetsContext);
   const { displayName, avatar, email, emailVerified, uid, followers, following } = currentUser;
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Profile = ({ match }) => {
   }, [])
 
   useEffect(() => {
-    fetchTweets({ queryParams: { username } })
+    fetchTweets({ queryParams: { username }, key: 'currentUser' })
   }, [])
 
   return (

@@ -13,7 +13,10 @@ const initialState = {
   isAdding: false,
   isAdded: false,
   dialogOpen: false,
-  tweets: [],
+  tweets: {
+    all: [],
+    currentUser: []
+  },
   newTweet: {
     displayName: '',
     username: '',
@@ -30,12 +33,12 @@ const TweetsProvider = ({ children }) => {
   const { uid, user: { displayName, avatar, username } } = useContext(AuthContext);
   const [state, dispatch] = useReducer(tweetsReducer, initialState);
 
-  const fetchTweets = ({ queryParams }) => {
+  const fetchTweets = ({ queryParams, key }) => {
     dispatch({
       type: IS_FETCHING
     })
 
-    listenToCollection({ queryParams, collection: 'tweets', action: dispatch, type: SET_TWEETS }).catch(err => {
+    listenToCollection({ queryParams, collection: 'tweets', action: dispatch, type: SET_TWEETS, key }).catch(err => {
       console.log(err)
     })
   }

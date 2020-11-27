@@ -7,7 +7,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
   const { isAuth, isFetching, isFetched } = useContext(AuthContext);
 
   if (isFetching) {
-    return <Loading />
+    return <Loading size='lg' />
   } else if (isAuth) {
     return (
       <main role="main" className="main__wrapper">

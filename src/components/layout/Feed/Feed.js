@@ -9,8 +9,10 @@ const Feed = () => {
   const { tweets, fetchTweets, isFetching, isFetched } = useContext(TweetsContext);
 
   useEffect(() => {
-    fetchTweets({ queryParams: {} });
+    fetchTweets({ queryParams: {}, key: 'all' });
   }, [])
+
+  console.log(tweets)
 
   return (
     <div className='feed__container'>
@@ -18,7 +20,7 @@ const Feed = () => {
       <div className="feed__tweet">
         <Tweet />
       </div>
-      <TweetsList isLoading={isFetching} tweets={tweets} />
+      <TweetsList isLoading={isFetching} tweets={tweets.all} />
     </div>
   )
 }

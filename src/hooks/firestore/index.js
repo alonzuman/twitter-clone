@@ -1,6 +1,6 @@
 import { db } from "../../firebase"
 
-export const fetchCollectionOnce = async ({ collection, queryParams }) => {
+export const fetchCollectionOnce = async ({ collection, queryParams, key }) => {
   let data = [];
   let query = db.collection(collection);
 
@@ -16,7 +16,7 @@ export const fetchCollectionOnce = async ({ collection, queryParams }) => {
   return data;
 }
 
-export const listenToCollection = async ({ collection, queryParams, action, type }) => {
+export const listenToCollection = async ({ collection, queryParams, action, type, key }) => {
   let query = db.collection(collection);
 
   Object.keys(queryParams).forEach(key => {
@@ -35,7 +35,9 @@ export const listenToCollection = async ({ collection, queryParams, action, type
     })
     return action({
       type: type,
-      payload: data
+      payload: {
+        [key]: data
+      }
     })
   })
 }

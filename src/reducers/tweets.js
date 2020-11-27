@@ -45,7 +45,10 @@ const tweetsReducer = (state, action) => {
     case SET_TWEETS:
       return {
         ...state,
-        tweets: [...payload],
+        tweets: {
+          ...state.tweets,
+          ...payload
+        },
         isFetching: false,
         isFetched: true
       }

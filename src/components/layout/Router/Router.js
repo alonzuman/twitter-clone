@@ -24,7 +24,7 @@ const Router = () => {
   }, [isFetched])
 
   if (isLoading) {
-    return <Loading />
+    return <Loading size='lg' />
   } else {
     return (
       <BrowserRouter>
