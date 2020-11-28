@@ -6,6 +6,7 @@
 
 .nav__wrapper {
   flex: 6;
+  max-width: 280px;
   display: flex;
   justify-content: flex-end;
   background-color: var(--bg-00);

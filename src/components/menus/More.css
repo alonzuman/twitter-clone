@@ -1,3 +1,28 @@
-.more__container {
-  padding: 8px 16px;
+.moreDialog__container {
+  padding: 16px 32px;
+}
+
+.more__paragraph {
+  color: var(--text-light);
+  margin-top: 0;
+  text-align: center;
+}
+
+.more__sectionTitle {
+  color: var(--text-light);
+}
+
+.more__section {
+  width: 100%;
+}
+
+.more__sectionContent {
+  background-color: var(--bg-03);
+  padding: 16px;
+  border-radius: 16px;
+  margin: 12px 0;
+}
+
+.more__bottomButtons {
+  display: flex;
 }

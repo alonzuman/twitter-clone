@@ -1,13 +1,15 @@
 .nav__container {
   position: fixed;
   height: 100%;
-  width: 268px;
+  width: 280px;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 8px 16px;
+  padding-top: 4px;
+  padding-right: 32px;
 }
 
 .nav__menu {
@@ -23,7 +25,6 @@
 }
 
 .nav__twitterIcon {
-  margin-left: 8px;
   margin-bottom: 8px;
   fill: var(--primary-main);
 }
@@ -39,6 +40,7 @@
     flex-direction: column;
     align-items: center;
     width: 80px;
+    padding-right: 16px;
   }
 
   .nav__twitterIcon {

@@ -1,0 +1,36 @@
+.backgroundButton {
+  cursor: pointer;
+  width: 100%;
+  padding: 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 1px solid var(--border-00);
+  border-radius: 4px;
+  margin-right: 4px;
+}
+
+.backgroundButton:focus {
+  outline: none;
+}
+
+.backgroundButton:last-of-type {
+  margin: 0;
+}
+
+.backgroundButton--default {
+  background-color: white;
+}
+
+.backgroundButton--lights-out {
+  background-color: black;
+  color: white;
+}
+
+.backgroundButton--dim {
+  background-color: #12202c;
+  color: white;
+}
+
+.backgroundButton--selected {
+  border: 1px solid var(--primary-main);
+}

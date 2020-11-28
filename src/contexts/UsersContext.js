@@ -43,12 +43,6 @@ const UsersProvider = ({ children }) => {
     }, { merge: true })
   }
 
-  // useEffect(() => {
-  //   if (process.env.NODE_ENV !== 'production') {
-  //     console.log('usersReducer change: ', state);
-  //   }
-  // }, [state])
-
   const value = {
     fetchUserByUsername,
     followUser,

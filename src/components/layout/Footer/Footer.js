@@ -13,9 +13,9 @@ const Footer = () => {
   const { width } = useWindowSize();
 
   const menu = [
-    { label: 'Feed', icon: <HomeIcon size={24} />, path: '/' },
+    { label: 'Feed', icon: <HomeIcon size={24} />, path: '/home' },
     // { label: 'Notifications', icon: <NotificationsIcon size={24} />, path: '/notifications' },
-    { label: 'Profile', icon: <ProfileIcon size={24} />, path: `/users/${username}` },
+    { label: 'Profile', icon: <ProfileIcon size={24} />, path: `/${username}` },
   ]
 
   if (width <= 500 && isAuth) {

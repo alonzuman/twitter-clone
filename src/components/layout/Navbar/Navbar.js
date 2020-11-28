@@ -23,9 +23,9 @@ const Navbar = () => {
   const { width } = useWindowSize();
 
   const menu = [
-    { label: 'Home', selectedIcon: <HomeIcon size={28} color='nav__icon' />, icon: <HomeIcon size={28} className='nav__icon' />, path: '/' },
+    { label: 'Home', selectedIcon: <HomeIcon size={28} color='nav__icon' />, icon: <HomeIcon size={28} className='nav__icon' />, path: '/home' },
     // { label: 'Explore', selectedIcon: <NotificationsIcon size={28} color='nav__icon' />, icon: <NotificationsIcon size={28} clasName='nav__icon' />, path: '/explore' },
-    { label: 'Profile', selectedIcon: <ProfileIcon size={28} color='nav__icon' />, icon: <ProfileIcon size={28} className='nav__icon' />, path: `/users/${username}` },
+    { label: 'Profile', selectedIcon: <ProfileIcon size={28} color='nav__icon' />, icon: <ProfileIcon size={28} className='nav__icon' />, path: `/${username}` },
     { label: 'More', selectedIcon: <MoreIcon size={28} color='nav__icon' />, icon: <MoreIcon size={28} className='nav__icon' />, onClick: openMoreDialog },
   ]
 
@@ -37,7 +37,7 @@ const Navbar = () => {
             <ul className="nav__menu">
               <Link className="nav__twitterIconWrapper" to='/'>
                 <IconButton size='md' className="nav__twitterIcon">
-                  <TwitterIcon size={28} />
+                  <TwitterIcon size={32} />
                 </IconButton>
               </Link>
               {menu.map(({ label, path, icon, onClick }) => <NavbarItem label={label} icon={icon} onClick={onClick ? onClick : null} link={path} key={label} />)}

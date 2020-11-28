@@ -9,7 +9,12 @@ const Feed = () => {
   const { tweets, fetchTweets, isFetching, isFetched } = useContext(TweetsContext);
 
   useEffect(() => {
-    fetchTweets({ queryParams: {}, key: 'all' });
+    fetchTweets({
+      queryParams: {
+        isTweet: true
+      },
+      key: 'all'
+    });
   }, [])
 
   return (

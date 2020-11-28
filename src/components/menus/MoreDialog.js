@@ -9,8 +9,10 @@ const MoreDialog = () => {
 
   return (
     <Dialog open={isMoreOpen} onClose={closeDialog}>
-      <DialogHeader title='Settings' onClose={closeDialog} />
-      <More />
+      <DialogHeader title='Customize display' onClose={closeDialog} />
+      <div className='moreDialog__container'>
+        <More />
+      </div>
     </Dialog>
   )
 }

@@ -1,5 +1,31 @@
-.tweetDialog__header {
+.dialogHeader {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 8px 12px;
   border-bottom: 1px solid var(--border-01);
+  min-height: 56px;
+}
+
+.dialogHeader__exitButtonContainer {
+  width: 32px;
+  margin-right: 8px;
+}
+
+.dialogHeader__exitButton {
+  fill: var(--primary-main);
+}
+
+.dialogHeader__secondaryActionContainer {
+  min-width: 32px;
+  margin-left: 8px;
+}
+
+.dialogHeader__titleContainer {
+  width: 100%;
+  text-align: center;
+}
+
+.dialogHeader__title {
+  color: var(--text-main);
 }

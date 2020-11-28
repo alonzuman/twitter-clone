@@ -1,8 +1,8 @@
 import './App.css';
 import Auth from './components/layout/Auth/Auth';
-import Loading from './components/layout/Loading/Loading';
+import Loading from './components/layout/SplashScreen/SplashScreen';
 import Router from './components/layout/Router/Router';
-import ProfileProvider, { ProfileContext } from './contexts/ProfileContext';
+import ProfileProvider from './contexts/ProfileContext';
 import ThemeProvider from './contexts/ThemeContext';
 import UsersProvider from './contexts/UsersContext';
 import { auth } from './firebase';

@@ -5,9 +5,59 @@
   transition: background-color .25s ease-in-out, .25s ease-in-out color, .25s ease-in-out border;
 }
 
-.dark {
+.font-1 {
+  font-size: 12px;
+}
+
+.font-2 {
+  font-size: 14px;
+}
+
+.font-3 {
+  font-size: 16px;
+}
+
+.font-4 {
+  font-size: 18px;
+}
+
+.font-5 {
+  font-size: 20px;
+}
+
+.dim {
   --primary-light-transparent: #00a2f929;
   --primary-light: #00a2f9;
+  --primary-main: #00a2f9;
+  --primary-dark: #0083c9;
+
+  --red-light-transparent: #f4005e19;
+  --red-main: #f4005c;
+
+  --text-light: #6b7f8d;
+  --text-main: #ffffff;
+  --text-dark: #ffffff;
+
+  --border-00: #32414b;
+  --border-01: #32414b;
+  --border-02: #acacac;
+
+  --box-shadow: #00000030;
+
+  --bg-00: #12202c;
+  --bg-01: #1f303f;
+  --bg-02: #fff;
+  --bg-03: #152735;
+  --bg-04: #fff;
+  --bg-05: #fff;
+  --bg-06: #fff;
+  --bg-07: #fff;
+  --bg-08: #fff;
+}
+
+.lights-out {
+  --primary-light-transparent: #00a2f929;
+  --primary-light: #6cc9fa;
   --primary-main: #00a2f9;
   --primary-dark: #0083c9;
 
@@ -22,11 +72,12 @@
   --border-01: #313131;
   --border-02: #acacac;
 
+  --box-shadow: #ffffff30;
 
-  --bg-00: #161616;
-  --bg-01: #222222;
+  --bg-00: #000;
+  --bg-01: #15181c;
   --bg-02: #fff;
-  --bg-03: #fff;
+  --bg-03: #15181c;
   --bg-04: #fff;
   --bg-05: #fff;
   --bg-06: #fff;
@@ -34,7 +85,7 @@
   --bg-08: #fff;
 }
 
-.light {
+.default {
   --primary-light-transparent: #e9f8ff;
   --primary-light: #00a2f9;
   --primary-main: #00a2f9;
@@ -47,6 +98,8 @@
   --text-main: #555555;
   --text-dark: #2c2c2c;
 
+  --box-shadow: #00000030;
+
   --border-00: #f1f1f1;
   --border-01: #eeeeee;
   --border-02: #acacac;
@@ -54,7 +107,7 @@
   --bg-00: #fff;
   --bg-01: #f8f8f8;
   --bg-02: #fff;
-  --bg-03: #fff;
+  --bg-03: #f6f9fa;
   --bg-04: #fff;
   --bg-05: #fff;
   --bg-06: #fff;

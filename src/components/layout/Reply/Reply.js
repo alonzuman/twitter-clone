@@ -16,6 +16,7 @@ const Reply = () => {
     createdAt: Date.now(),
     avatar: '',
     likes: [],
+    isTweet: false,
     replies: [],
     repliedTo: currentTweet.id,
     repliedTweet: {

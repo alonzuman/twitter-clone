@@ -13,7 +13,7 @@ const TweetCard = ({ tweet }) => {
   return (
     <Link className='tweetCard__link' to={`/tweets/${id}`}>
       <li className='tweetCard__container'>
-        <Link onClick={e => e.stopPropagation()} to={`/users/${username}`}>
+        <Link to={`/${username}`}>
           <TweetCardAvatar src={avatar} alt={displayName} />
         </Link>
         <main className='tweetCard__main'>

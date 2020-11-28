@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useReducer } from 'react'
 import { auth, db } from '../firebase';
+import faker from 'faker';
 import profileReducer, { CLEAR_PROFILE, SET_PROFILE, ERROR, IS_FETCHING } from '../reducers/profile';
 const Users = db.collection('users');
 
@@ -34,7 +35,8 @@ const ProfileProvider = ({ children }) => {
       type: IS_FETCHING
     })
     let user = {};
-    const { uid, displayName, email, photoUrl: avatar, phoneNumber, emailVerified } = auth.currentUser
+    const { uid, displayName, email, photoURL, phoneNumber, emailVerified, isAnonymous } = auth.currentUser
+
     const snapshot = await Users.doc(uid).get();
 
     if (snapshot.exists) {
@@ -43,18 +45,32 @@ const ProfileProvider = ({ children }) => {
         ...snapshot.data()
       }
     } else {
-      user = {
-        uid,
-        displayName,
-        username: email.split('@')[0],
-        email,
-        avatar,
-        phoneNumber,
-        emailVerified,
-        followers: [],
-        following: [],
-        createdAt: Date.now()
+      if (isAnonymous) {
+        user = {
+          uid,
+          displayName: faker.name.findName(),
+          username: faker.name.firstName(),
+          avatar: 'https://gravatar.com/avatar/fc2e138321e1a579e919902be761c7fa?s=400&d=robohash&r=x',
+          isAnonymous,
+          following: [],
+          followers: [],
+          createdAt: Date.now()
+        }
+      } else {
+        user = {
+          uid,
+          displayName,
+          username: email.split('@')[0],
+          email,
+          avatar: photoURL,
+          phoneNumber,
+          emailVerified,
+          followers: [],
+          following: [],
+          createdAt: Date.now()
+        }
       }
+      await Users.doc(uid).set(user);
     }
 
     dispatch({

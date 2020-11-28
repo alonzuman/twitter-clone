@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import { Redirect, Route } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import Loading from '../Loading/Loading';
+import Loading from '../SplashScreen/SplashScreen';
 import { auth } from '../../../firebase';
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
-  const [user, loading, error] = useAuthState(auth)
+  const [user, loading] = useAuthState(auth)
 
   if (loading) {
     return <Loading size='lg' />

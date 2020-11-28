@@ -1,6 +1,6 @@
 .dialog__wrapper {
   z-index: 1200;
-  background-color: #00000030;
+  background-color: var(--box-shadow);
   position: fixed;
   top: 0;
   right: 0;
@@ -16,4 +16,16 @@
   border-radius: 16px;
   margin: 16px;
   margin-top: 32px;
+}
+
+@media (min-width: 768px) {
+  .dialog__container {
+    min-width: 512px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dialog__container {
+    width: 100%;
+  }
 }

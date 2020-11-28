@@ -1,0 +1,63 @@
+.rangeSlider__container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.rangeSlider__renderBefore {
+  font-size: 14px;
+  font-weight: 600;
+  margin-right: 16px;
+  color: var(--text-main);
+}
+
+.rangeSlider__renderAfter {
+  font-size: 24px;
+  font-weight: 600;
+  margin-left: 16px;
+  color: var(--text-main);
+}
+
+/* The rangeSlider itself */
+.rangeSlider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 8px; /* Specified height */
+  border-radius: 16px;
+  background: var(--primary-light); /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.rangeSlider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The rangeSlider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.rangeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 16px; /* Set a specific rangeSlider handle width */
+  height: 16px; /* rangeSlider handle height */
+  background: var(--primary-dark); /* Green background */
+  border-radius: 50%;
+  cursor: pointer; /* Cursor on hover */
+}
+
+.rangeSlider::-webkit-slider-thumb:hover {
+  height: 18px;
+  width: 18px;
+  transition: height .15s ease-in-out, width .15s ease-in-out;
+}
+
+.rangeSlider::-moz-range-thumb {
+  width: 16px; /* Set a specific rangeSlider handle width */
+  height: 16px; /* rangeSlider handle height */
+  background: var(--primary-dark); /* Green background */
+  border-radius: 50%;
+  cursor: pointer; /* Cursor on hover */
+}

@@ -6,6 +6,7 @@
 
 .tweetsList__emptyStateText {
   font-size: 1.2rem;
+  color: var(--text-main);
 }
 
 .tweetsList__spinner {

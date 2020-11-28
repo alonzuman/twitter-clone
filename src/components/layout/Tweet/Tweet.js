@@ -16,6 +16,7 @@ const Tweet = ({ autoFocus, rows }) => {
     createdAt: Date.now(),
     avatar: '',
     likes: [],
+    isTweet: true,
     replies: 0,
     repliedTo: '',
     uid: ''
