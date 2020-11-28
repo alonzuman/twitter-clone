@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { AuthContext } from '../../../contexts/AuthContext';
+import { ProfileContext } from '../../../contexts/ProfileContext';
+import TweetsProvider from '../../../contexts/TweetsContext';
 import MoreDialog from '../../menus/MoreDialog';
 import Auth from '../Auth/Auth';
 import Feed from '../Feed/Feed';
@@ -8,39 +9,38 @@ import Footer from '../Footer/Footer';
 import Loading from '../Loading/Loading';
 import Navbar from '../Navbar/Navbar';
 import Profile from '../Profile/Profile';
+import ReplyDialog from '../Reply/ReplyDialog';
 import Sidebar from '../Sidebar/Sidebar';
 import TweetDialog from '../Tweet/TweetDialog';
-import ProtectedRoute from './ProtectedRoute';
+import TweetPage from '../TweetPage/TweetPage';
+import ProtectedRoute from './ProtectedRoute'
 import './Router.css';
 
 const Router = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const { isFetching, isFetched, isAuth } = useContext(AuthContext);
+  const { user, isFetching } = useContext(ProfileContext);
 
-  useEffect(() => {
-    if (isFetched) {
-      setIsLoading(false)
-    }
-  }, [isFetched])
-
-  if (isLoading) {
-    return <Loading size='lg' />
+  if (isFetching || !user) {
+    return <Loading />
   } else {
     return (
-      <BrowserRouter>
-        <TweetDialog />
-        <MoreDialog isOpen />
-        <div className="app__container">
-          <Navbar />
-          <Switch>
-            <ProtectedRoute exact path='/' component={Feed} />
-            <ProtectedRoute path='/users/:username' component={Profile} />
-            <Route path='/sign-in' component={Auth} />
-          </Switch>
-          <Sidebar />
-          <Footer />
-        </div>
-      </BrowserRouter>
+      <TweetsProvider>
+        <BrowserRouter>
+          <TweetDialog />
+          <ReplyDialog />
+          <MoreDialog isOpen />
+          <div className="app__container">
+            <Navbar />
+            <Switch>
+              <ProtectedRoute exact path='/' component={Feed} />
+              <ProtectedRoute path='/users/:username' component={Profile} />
+              <ProtectedRoute path='/tweets/:tweetId' component={TweetPage} />
+              <Route path='/sign-in' component={Auth} />
+            </Switch>
+            <Sidebar />
+            <Footer />
+          </div>
+        </BrowserRouter>
+      </TweetsProvider>
     )
   }
 }

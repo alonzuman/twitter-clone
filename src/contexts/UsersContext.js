@@ -1,8 +1,7 @@
-import React, { createContext, useEffect, useReducer } from 'react'
+import React, { createContext, useReducer } from 'react'
 import firebase from 'firebase';
 import { db } from '../firebase';
-import { IS_FETCHING } from '../reducers/auth';
-import usersReducer, { SET_ONE } from '../reducers/users';
+import usersReducer, { IS_FETCHING, SET_ONE } from '../reducers/users';
 const Users = db.collection('users');
 
 export const UsersContext = createContext({});

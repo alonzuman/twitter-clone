@@ -6,13 +6,13 @@ import Dialog from '../Dialog/Dialog';
 import DialogHeader from '../Dialog/DialogHeader';
 
 const TweetDialog = () => {
-  const { dialogOpen, closeDialog } = useContext(TweetsContext);
+  const { newTweetDialogOpen, closeNewTweetDialog } = useContext(TweetsContext);
 
   return (
     <Suspense fallback={null}>
-      <Dialog open={dialogOpen} onClose={closeDialog}>
+      <Dialog open={newTweetDialogOpen} onClose={closeNewTweetDialog}>
         <div className='tweetDialog__container'>
-          <DialogHeader onClose={closeDialog} />
+          <DialogHeader onClose={closeNewTweetDialog} />
           <div className='tweetDialog__body'>
             <Tweet autoFocus rows={6} />
           </div>

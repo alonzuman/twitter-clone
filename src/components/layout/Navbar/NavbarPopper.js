@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react';
 import ChevronDownIcon from '../../../assets/icons/ChevronDownIcon';
-import { AuthContext } from '../../../contexts/AuthContext';
+import { ProfileContext } from '../../../contexts/ProfileContext';
 import Avatar from '../../avatars/Avatar/Avatar';
 import SecondaryButton from '../../buttons/SecondaryButton/SecondaryButton';
 import Popper from '../Popper/Popper';
 import './NavbarPopper.css';
 
 const NavbarPopper = () => {
-  const { signOut, user: { avatar, displayName } } = useContext(AuthContext);
+  const { signOut, user: { avatar, displayName } } = useContext(ProfileContext);
   const [isOpen, setIsOpen] = useState(false);
 
   return (

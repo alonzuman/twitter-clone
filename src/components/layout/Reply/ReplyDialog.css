@@ -1,0 +1,11 @@
+.replyDialog__container {
+  padding: 16px;
+  padding-bottom: 8px;
+}
+
+@media (min-width: 768px) {
+  .replyDialog__container {
+    min-width: 512px;
+    max-width: 600px;
+  }
+}

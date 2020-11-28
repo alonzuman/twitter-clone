@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { AuthContext } from '../../../../contexts/AuthContext';
+import { ProfileContext } from '../../../../contexts/ProfileContext';
 import { UsersContext } from '../../../../contexts/UsersContext';
 import { displayBigNums } from '../../../../utils/maths';
 import Avatar from '../../../avatars/Avatar/Avatar';
@@ -17,7 +17,7 @@ const ProfileHero = ({
   followers = []
 }) => {
   const [isHovering, setIsHovering] = useState(false);
-  const { user: { uid: currentUserId } } = useContext(AuthContext);
+  const { user: { uid: currentUserId } } = useContext(ProfileContext);
   const { followUser, unfollowUser } = useContext(UsersContext);
   const isFollowing = followers?.includes(currentUserId)
 

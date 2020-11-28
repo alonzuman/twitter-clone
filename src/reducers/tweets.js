@@ -1,8 +1,11 @@
 export const IS_FETCHING = 'TWEETS/IS_FETCHING';
 export const IS_ADDING = 'TWEETS/IS_ADDING';
-export const DIALOG_OPEN = 'TWEETS/DIALOG_OPEN';
-export const DIALOG_CLOSED = 'TWEETS/DIALOG_CLOSED';
+export const NEW_TWEET_DIALOG_OPEN = 'TWEETS/NEW_TWEET_DIALOG_OPEN';
+export const NEW_REPLY_DIALOG_OPEN = 'TWEETS/NEW_REPLY_DIALOG_CLOSED';
+export const NEW_TWEET_DIALOG_CLOSED = 'TWEETS/NEW_TWEET_DIALOG_CLOSED';
+export const NEW_REPLY_DIALOG_CLOSED = 'TWEETS/NEW_REPLY_DIALOG_OPEN';
 export const SET_TWEETS = 'TWEETS/SET_TWEETS';
+export const SET_TWEET = 'TWEETS/SET_TWEET';
 export const ADD_TWEET = 'TWEETS/ADD_TWEET';
 export const EDIT_TWEET = 'TWEETS/EDIT_TWEET';
 export const DELETE_TWEET = 'TWEETS/DELETE_TWEET';
@@ -22,25 +25,29 @@ const tweetsReducer = (state, action) => {
         isAdded: false,
         isAdding: true
       }
-    case EDIT_TWEET:
+    case NEW_TWEET_DIALOG_OPEN:
       return {
         ...state,
-        newTweet: {
-          ...state.newTweet,
-          ...payload
+        newTweetDialogOpen: true
+      }
+    case NEW_TWEET_DIALOG_CLOSED:
+      return {
+        ...state,
+        newTweetDialogOpen: false
+      }
+    case NEW_REPLY_DIALOG_OPEN:
+      return {
+        ...state,
+        tweets: {
+          ...state.tweets,
+          currentTweet: payload,
         },
-        isAdding: false,
-        isAdded: false
+        newReplyDialogOpen: true
       }
-    case DIALOG_OPEN:
+    case NEW_REPLY_DIALOG_CLOSED:
       return {
         ...state,
-        dialogOpen: true
-      }
-    case DIALOG_CLOSED:
-      return {
-        ...state,
-        dialogOpen: false
+        newReplyDialogOpen: false
       }
     case SET_TWEETS:
       return {
@@ -54,7 +61,8 @@ const tweetsReducer = (state, action) => {
       }
     case ADD_TWEET:
       return {
-        ...state
+        ...state,
+        isAdding: false
       }
     default: return state;
   }

@@ -2,14 +2,14 @@ import React, { Suspense, useContext } from 'react';
 import HomeIcon from '../../../assets/icons/HomeIcon';
 import NotificationsIcon from '../../../assets/icons/NotificationsIcon';
 import ProfileIcon from '../../../assets/icons/ProfileIcon';
-import { AuthContext } from '../../../contexts/AuthContext';
+import { ProfileContext } from '../../../contexts/ProfileContext';
 import useWindowSize from '../../../hooks/useWindowSize';
 import './Footer.css';
 import FooterItem from './FooterItem';
 import FooterTweetButton from './FooterTweetButton';
 
 const Footer = () => {
-  const { isAuth, user: { username } } = useContext(AuthContext);
+  const { isAuth, user: { username } } = useContext(ProfileContext);
   const { width } = useWindowSize();
 
   const menu = [

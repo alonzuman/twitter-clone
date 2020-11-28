@@ -5,10 +5,10 @@ import PrimaryButton from '../../buttons/PrimaryButton/PrimaryButton'
 import { TweetsContext } from '../../../contexts/TweetsContext';
 
 const FooterTweetButton = () => {
-  const { openDialog } = useContext(TweetsContext);
+  const { openNewTweetDialog } = useContext(TweetsContext);
 
   return (
-    <PrimaryButton onClick={openDialog} size='lg' className='footerTweetButton'>
+    <PrimaryButton onClick={openNewTweetDialog} size='lg' className='footerTweetButton'>
       <AddIcon className='footerTweetButton__icon' size={24} />
     </PrimaryButton>
   )

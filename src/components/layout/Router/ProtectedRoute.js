@@ -1,14 +1,15 @@
 import React, { useContext, useEffect } from 'react'
 import { Redirect, Route } from 'react-router-dom';
-import { AuthContext } from '../../../contexts/AuthContext'
+import { useAuthState } from 'react-firebase-hooks/auth';
 import Loading from '../Loading/Loading';
+import { auth } from '../../../firebase';
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
-  const { isAuth, isFetching, isFetched } = useContext(AuthContext);
+  const [user, loading, error] = useAuthState(auth)
 
-  if (isFetching) {
+  if (loading) {
     return <Loading size='lg' />
-  } else if (isAuth) {
+  } else if (user) {
     return (
       <main role="main" className="main__wrapper">
         <Route {...rest} component={props => <Component {...props} />} />

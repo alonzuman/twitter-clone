@@ -1,10 +1,8 @@
 import firebase from 'firebase';
 import { db } from '../firebase';
-import React, { createContext, useContext, useEffect, useReducer, useState } from 'react';
-import tweetsReducer, { IS_ADDING } from '../reducers/tweets';
-import { SET_TWEETS, IS_FETCHING, DIALOG_CLOSED, DIALOG_OPEN, EDIT_TWEET } from '../reducers/tweets';
-import { AuthContext } from './AuthContext';
-import { fetchCollectionOnce, listenToCollection } from '../hooks/firestore';
+import React, { createContext, useReducer } from 'react';
+import tweetsReducer, { ADD_TWEET, IS_ADDING, NEW_REPLY_DIALOG_CLOSED, NEW_REPLY_DIALOG_OPEN, SET_TWEETS, IS_FETCHING, NEW_TWEET_DIALOG_CLOSED, NEW_TWEET_DIALOG_OPEN } from '../reducers/tweets';
+import { listenToCollection, listenToDocument } from '../hooks/firestore';
 const Tweets = db.collection('tweets');
 
 const initialState = {
@@ -12,25 +10,19 @@ const initialState = {
   isFetched: false,
   isAdding: false,
   isAdded: false,
-  dialogOpen: false,
+  newTweetDialogOpen: false,
+  newReplyDialogOpen: false,
   tweets: {
     all: [],
+    currentTweet: {},
+    currentTweetReplies: [],
     currentUser: []
-  },
-  newTweet: {
-    displayName: '',
-    username: '',
-    content: '',
-    createdAt: Date.now(),
-    avatar: '',
-    likes: []
   }
 }
 
 export const TweetsContext = createContext({});
 
 const TweetsProvider = ({ children }) => {
-  const { uid, user: { displayName, avatar, username } } = useContext(AuthContext);
   const [state, dispatch] = useReducer(tweetsReducer, initialState);
 
   const fetchTweets = ({ queryParams, key }) => {
@@ -38,52 +30,85 @@ const TweetsProvider = ({ children }) => {
       type: IS_FETCHING
     })
 
-    listenToCollection({ queryParams, collection: 'tweets', action: dispatch, type: SET_TWEETS, key }).catch(err => {
+    listenToCollection({ queryParams, collection: 'tweets', dispatch, type: SET_TWEETS, key }).catch(err => {
       console.log(err)
     })
   }
 
-  const editTweet = e => {
+  const fetchTweet = (id) => {
     dispatch({
-      type: EDIT_TWEET,
-      payload: {
-        content: e.target.value
-      }
+      type: IS_FETCHING
+    })
+
+    listenToDocument({ collection: 'tweets', id, dispatch, type: SET_TWEETS, key: 'currentTweet' }).catch(err => {
+      console.log(err)
     })
   }
 
-  const addTweet = async () => {
+  const fetchTweetReplies = (id) => {
+    dispatch({
+      type: IS_FETCHING
+    })
+
+    listenToCollection({
+      collection: `tweets/${id}/replies`,
+      queryParams: {
+        repliedTo: id
+      },
+      id,
+      dispatch,
+      type: SET_TWEETS,
+      key: 'currentTweetReplies'
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
+  const addTweet = async (tweet) => {
     dispatch({
       type: IS_ADDING
     })
-    const { newTweet } = state;
-    await Tweets.add({
-      ...newTweet,
-      username,
-      uid,
-      displayName,
-      avatar,
-    });
+    const isReply = tweet.repliedTo;
+    await Tweets.add(tweet);
+
     dispatch({
-      type: EDIT_TWEET,
-      payload: {
-        content: ''
-      }
+      type: ADD_TWEET
     })
-    closeDialog();
+    closeNewTweetDialog();
+    if (isReply) {
+      await Tweets.doc(tweet.repliedTo).update({
+        replies: firebase.firestore.FieldValue.increment(1)
+      })
+      closeNewReplyDialog();
+    }
   }
 
   const deleteTweet = async (id) => {
     await Tweets.doc(id).delete()
   }
 
-  const openDialog = () => {
-    dispatch({ type: DIALOG_OPEN })
+  const openNewTweetDialog = () => {
+    dispatch({
+      type: NEW_TWEET_DIALOG_OPEN,
+    })
   };
 
-  const closeDialog = () => {
-    dispatch({ type: DIALOG_CLOSED })
+  const closeNewTweetDialog = () => {
+    dispatch({ type: NEW_TWEET_DIALOG_CLOSED })
   };
+
+  const openNewReplyDialog = (currentTweet) => {
+    dispatch({
+      type: NEW_REPLY_DIALOG_OPEN,
+      payload: currentTweet,
+    })
+  }
+
+  const closeNewReplyDialog = () => {
+    dispatch({
+      type: NEW_REPLY_DIALOG_CLOSED
+    })
+  }
 
   const likeTweet = async (id, uid) => {
     await Tweets.doc(id).set({
@@ -99,21 +124,18 @@ const TweetsProvider = ({ children }) => {
 
   const value = {
     fetchTweets,
-    editTweet,
+    fetchTweet,
+    fetchTweetReplies,
     addTweet,
     deleteTweet,
-    openDialog,
-    closeDialog,
+    openNewTweetDialog,
+    closeNewTweetDialog,
+    openNewReplyDialog,
+    closeNewReplyDialog,
     likeTweet,
     unlikeTweet,
     ...state,
   }
-
-  // useEffect(() => {
-  //   if (process.env.NODE_ENV !== 'production') {
-  //     console.log('tweetsReducer change: ', state)
-  //   }
-  // }, [state])
 
   return (
     <TweetsContext.Provider value={value}>

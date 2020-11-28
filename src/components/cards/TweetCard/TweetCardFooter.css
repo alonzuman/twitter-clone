@@ -4,7 +4,13 @@
   margin-top: 4px;
 }
 
-.tweetCardFooter__likesCount {
+.tweetCardFooter__action {
+  margin-right: 64px;
+  display: flex;
+  align-items: center;
+}
+
+.tweetCardFooter__counter {
   padding-left: 4px;
   padding-right: 4px;
   color: var(--text-main);

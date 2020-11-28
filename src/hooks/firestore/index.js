@@ -16,7 +16,7 @@ export const fetchCollectionOnce = async ({ collection, queryParams, key }) => {
   return data;
 }
 
-export const listenToCollection = async ({ collection, queryParams, action, type, key }) => {
+export const listenToCollection = async ({ collection, queryParams, dispatch, type, key }) => {
   let query = db.collection(collection);
 
   Object.keys(queryParams).forEach(key => {
@@ -33,8 +33,38 @@ export const listenToCollection = async ({ collection, queryParams, action, type
         ...doc.data()
       }
     })
-    return action({
-      type: type,
+    return dispatch({
+      type,
+      payload: {
+        [key]: data
+      }
+    })
+  })
+}
+
+export const getDocument = async ({ collection, id, dispatch, type, key }) => {
+  const snapshot = await db.collection(collection).doc(id).get();
+
+  return dispatch({
+    type,
+    payload: {
+      [key]: {
+        id: snapshot.id,
+        ...snapshot.data()
+      }
+    }
+  })
+}
+
+export const listenToDocument = async ({ collection, id, dispatch, type, key }) => {
+  await db.collection(collection).doc(id).onSnapshot(snapshot => {
+    const data = {
+      id: snapshot.id,
+      ...snapshot.data()
+    }
+
+    return dispatch({
+      type,
       payload: {
         [key]: data
       }
