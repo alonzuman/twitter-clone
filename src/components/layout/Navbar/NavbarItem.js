@@ -5,7 +5,7 @@ import './NavbarItem.css';
 const NavbarItem = ({ label, icon, link, onClick }) => {
   if (link) {
     return (
-      <NavLink activeClassName='navbarItem__container--active' onClick={onClick} to={link} className="baseFocus navbarItem__container">
+      <NavLink exact activeClassName='navbarItem__container--active' onClick={onClick} to={link} className="baseFocus navbarItem__container">
         <span className="navbarItem__icon">{icon}</span>
         <span className="navbarItem__label">{label}</span>
       </NavLink>

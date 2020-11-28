@@ -6,7 +6,7 @@ import './TweetCardHeader.css';
 import moment from 'moment';
 import useProfile from '../../../hooks/useProfile';
 
-const TweetCardHeader = ({ id, displayName, username, createdAt }) => {
+const TweetCardHeader = ({ displayName, username, createdAt, tweet }) => {
   const { username: currentUsername } = useProfile();
   const { deleteTweet } = useContext(TweetsContext);
 
@@ -19,7 +19,7 @@ const TweetCardHeader = ({ id, displayName, username, createdAt }) => {
         <span className='tweetCard__timestamp'>{moment(createdAt).fromNow()}</span>
       </div>
       {currentUsername === username &&
-        <IconButton size='sm' onClick={() => deleteTweet(id)}>
+        <IconButton size='sm' onClick={() => deleteTweet(tweet)}>
           <MoreIcon size={18} className='tweetCard__header--icon' />
         </IconButton>}
     </header>

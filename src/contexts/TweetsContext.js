@@ -64,8 +64,13 @@ const TweetsProvider = ({ children }) => {
     }
   }
 
-  const deleteTweet = async (id) => {
-    await Tweets.doc(id).delete()
+  const deleteTweet = async (tweet) => {
+    if (tweet.repliedTo) {
+      await Tweets.doc(tweet.repliedTo).update({
+        replies: firebase.firestore.FieldValue.increment(-1)
+      })
+    }
+    await Tweets.doc(tweet.id).delete()
   }
 
   const openNewTweetDialog = () => {

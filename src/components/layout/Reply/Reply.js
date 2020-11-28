@@ -18,6 +18,9 @@ const Reply = () => {
     likes: [],
     replies: [],
     repliedTo: currentTweet.id,
+    repliedTweet: {
+      ...currentTweet
+    },
     uid: ''
   })
 

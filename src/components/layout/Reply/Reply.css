@@ -14,6 +14,7 @@
 }
 
 .reply__middle {
+  margin-top: 2px;
   width: 100%;
 }
 
@@ -26,7 +27,7 @@
 }
 
 .reply__tweetContent {
-  margin-top: -8px;
+  margin-top: -4px;
   color: var(--text-main);
 }
 
