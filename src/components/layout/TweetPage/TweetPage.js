@@ -1,9 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { TweetsContext } from '../../../contexts/TweetsContext';
 import TweetCard from '../../cards/TweetCard/TweetCard';
-import TweetRepliesList from '../../lists/TweetRepliesList/TweetRepliesList';
 import TweetsList from '../../lists/TweetsList/TweetsList';
-import Spinner from '../../loaders/Spinner/Spinner';
 import Header from '../Header/Header';
 import './TweetPage.css';
 
