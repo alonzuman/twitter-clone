@@ -1,0 +1,13 @@
+.tweetsList__emptyState {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.tweetsList__emptyStateText {
+  font-size: 1.2rem;
+}
+
+.tweetsList__spinner {
+  margin-top: 64px;
+}

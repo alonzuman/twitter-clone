@@ -13,11 +13,17 @@
   text-decoration: inherit;
 }
 
+.navbarItem__container--active {
+  color: var(--primary-main);
+  fill: var(--primary-main);
+}
+
 .navbarItem__container:focus {
   outline: none;
 }
 
 .navbarItem__icon {
+  fill: inherit;
 }
 
 .navbarItem__label {

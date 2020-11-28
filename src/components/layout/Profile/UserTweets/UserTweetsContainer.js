@@ -4,16 +4,15 @@ import TweetsList from '../../../lists/TweetsList/TweetsList';
 import Spinner from '../../../loaders/Spinner/Spinner'
 
 const UserTweetsContainer = ({ username }) => {
-
-  const { fetchTweets, tweets: { currentUser: tweets }, isFetching, isFetched } = useContext(TweetsContext);
+  const { fetchTweets, tweets: { currentUserTweets }, isFetching, isFetched } = useContext(TweetsContext);
 
   useEffect(() => {
-    fetchTweets({ queryParams: { username }, key: 'currentUser' })
+    fetchTweets({ queryParams: { username }, key: 'currentUserTweets' })
   }, [])
 
   return (
     <Suspense fallback={<Spinner />}>
-      <TweetsList isLoading={isFetching} tweets={tweets} />
+      <TweetsList isLoading={isFetching} tweets={currentUserTweets} />
     </Suspense>
   )
 }

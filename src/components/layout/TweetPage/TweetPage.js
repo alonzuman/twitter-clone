@@ -6,14 +6,18 @@ import Header from '../Header/Header';
 import './TweetPage.css';
 
 const TweetPage = ({ match: { params } }) => {
-  const { fetchTweet, fetchTweetReplies, isFetching, tweets: { currentTweet, currentTweetReplies } } = useContext(TweetsContext);
+  const { fetchTweet, fetchTweets, fetchTweetReplies, isFetching, tweets: { currentTweet, currentTweetReplies } } = useContext(TweetsContext);
   const { tweetId } = params;
 
-  useEffect(() =>{
-    if (currentTweet.id !== tweetId) {
-      fetchTweet(tweetId);
-      fetchTweetReplies(tweetId);
-    }
+  useEffect(() => {
+    fetchTweet(tweetId);
+    fetchTweets({
+      collection: 'tweets',
+      queryParams: {
+        repliedTo: tweetId
+      },
+      key: 'currentTweetReplies'
+    })
   }, [tweetId])
 
   return (

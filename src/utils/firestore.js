@@ -1,4 +1,4 @@
-import { db } from "../../firebase"
+import { db } from "../firebase"
 
 export const fetchCollectionOnce = async ({ collection, queryParams, key }) => {
   let data = [];

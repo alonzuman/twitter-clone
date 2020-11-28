@@ -4,9 +4,11 @@ import { TweetsContext } from '../../../contexts/TweetsContext';
 import IconButton from '../../buttons/IconButton/IconButton';
 import './TweetCardHeader.css';
 import moment from 'moment';
+import useProfile from '../../../hooks/useProfile';
 
 const TweetCardHeader = ({ id, displayName, username, createdAt }) => {
-  const { deleteTweet } =  useContext(TweetsContext);
+  const { username: currentUsername } = useProfile();
+  const { deleteTweet } = useContext(TweetsContext);
 
   return (
     <header className='tweetCard__header'>
@@ -16,9 +18,10 @@ const TweetCardHeader = ({ id, displayName, username, createdAt }) => {
         <span className='tweetCard__seperator'>·</span>
         <span className='tweetCard__timestamp'>{moment(createdAt).fromNow()}</span>
       </div>
-      <IconButton size='sm' onClick={() => deleteTweet(id)}>
-        <MoreIcon size={18} className='tweetCard__header--icon' />
-      </IconButton>
+      {currentUsername === username &&
+        <IconButton size='sm' onClick={() => deleteTweet(id)}>
+          <MoreIcon size={18} className='tweetCard__header--icon' />
+        </IconButton>}
     </header>
   )
 }

@@ -5,12 +5,12 @@ import './TweetsList.css';
 
 const TweetsList = ({ isLoading, tweets = [] }) => {
   if (isLoading) {
-    return <Spinner size='md' />
+    return <Spinner size='md' className='tweetsList__spinner' />
   } else if (!isLoading && tweets.length === 0) {
     return (
-      <ul className='tweetsList'>
-        No tweets to show
-      </ul>
+      <div className='tweetsList__emptyState'>
+        <h2 className='tweetsList__emptyStateText'>No tweets to show</h2>
+      </div>
     )
   } else {
     return (

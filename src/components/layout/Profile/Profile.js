@@ -11,7 +11,7 @@ import ProfileHero from './ProfileHero/ProfileHero';
 const Profile = ({ match }) => {
   const { username } = match.params;
   const { fetchUserByUsername, currentUser, isFetching: fetchingUser, isFetched: fetchedUser } = useContext(UsersContext);
-  const { fetchTweets, tweets: { currentUser: tweets }, isFetching: fetchingTweets, isFetched: fetchedTweets } = useContext(TweetsContext);
+  const { fetchTweets, tweets: { currentUserTweets }, isFetching: fetchingTweets } = useContext(TweetsContext);
   const { displayName, avatar, email, emailVerified, uid, followers, following } = currentUser;
 
   useEffect(() => {
@@ -19,14 +19,14 @@ const Profile = ({ match }) => {
   }, [])
 
   useEffect(() => {
-    fetchTweets({ queryParams: { username }, key: 'currentUser' })
+    fetchTweets({ queryParams: { username }, key: 'currentUserTweets' })
   }, [])
 
   return (
     <div className='profile__container'>
       <Header
         title={fetchingUser ? <Skeleton height={18} width={144} /> : displayName}
-        subtitle={fetchingUser ? <Skeleton height={12} width={96} /> : `${tweets.length} Tweets`}
+        subtitle={fetchingUser ? <Skeleton height={12} width={96} /> : `${currentUserTweets?.length} Tweets`}
         backButton
       />
       <ProfileHero
@@ -40,7 +40,7 @@ const Profile = ({ match }) => {
         following={following}
         uid={uid}
       />
-      <TweetsList isLoading={fetchingTweets} tweets={tweets} />
+      <TweetsList isLoading={fetchingTweets} tweets={currentUserTweets} />
     </div>
   )
 }

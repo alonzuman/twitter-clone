@@ -10,12 +10,14 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 function App() {
   const [user, loading] = useAuthState(auth);
+
   return (
     <ThemeProvider>
       <ProfileProvider>
         <UsersProvider>
           {loading && !user && <Loading />}
           {user && !loading && <Router />}
+          {!loading && !user && <Auth />}
         </UsersProvider>
       </ProfileProvider>
     </ThemeProvider>

@@ -33,6 +33,8 @@ const Reply = () => {
     }
   }, [uid])
 
+  const isDisabled = isAdding || tweet.content === ''
+
   return (
     <div className='reply'>
       <section className='reply__section'>
@@ -53,7 +55,7 @@ const Reply = () => {
         <textarea className='reply__input' palceholder='Tweet your reply' value={tweet.content} onChange={e => setTweet({ ...tweet, content: e.target.value })} />
       </section>
       <footer className='reply__footer'>
-        <PrimaryButton isLoading={isAdding} disabled={isAdding} onClick={() => addTweet(tweet)}>Reply</PrimaryButton>
+        <PrimaryButton isLoading={isAdding} disabled={isDisabled} onClick={() => addTweet(tweet)}>Reply</PrimaryButton>
       </footer>
     </div>
   )

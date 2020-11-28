@@ -2,7 +2,7 @@ import firebase from 'firebase';
 import { db } from '../firebase';
 import React, { createContext, useReducer } from 'react';
 import tweetsReducer, { ADD_TWEET, IS_ADDING, NEW_REPLY_DIALOG_CLOSED, NEW_REPLY_DIALOG_OPEN, SET_TWEETS, IS_FETCHING, NEW_TWEET_DIALOG_CLOSED, NEW_TWEET_DIALOG_OPEN } from '../reducers/tweets';
-import { listenToCollection, listenToDocument } from '../hooks/firestore';
+import { listenToCollection, listenToDocument } from '../utils/firestore';
 const Tweets = db.collection('tweets');
 
 const initialState = {
@@ -16,7 +16,7 @@ const initialState = {
     all: [],
     currentTweet: {},
     currentTweetReplies: [],
-    currentUser: []
+    currentUserTweets: []
   }
 }
 
@@ -25,12 +25,12 @@ export const TweetsContext = createContext({});
 const TweetsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(tweetsReducer, initialState);
 
-  const fetchTweets = ({ queryParams, key }) => {
+  const fetchTweets = ({ queryParams, key, ...rest }) => {
     dispatch({
       type: IS_FETCHING
     })
 
-    listenToCollection({ queryParams, collection: 'tweets', dispatch, type: SET_TWEETS, key }).catch(err => {
+    listenToCollection({ queryParams, collection: 'tweets', dispatch, type: SET_TWEETS, key, ...rest }).catch(err => {
       console.log(err)
     })
   }
@@ -41,25 +41,6 @@ const TweetsProvider = ({ children }) => {
     })
 
     listenToDocument({ collection: 'tweets', id, dispatch, type: SET_TWEETS, key: 'currentTweet' }).catch(err => {
-      console.log(err)
-    })
-  }
-
-  const fetchTweetReplies = (id) => {
-    dispatch({
-      type: IS_FETCHING
-    })
-
-    listenToCollection({
-      collection: `tweets/${id}/replies`,
-      queryParams: {
-        repliedTo: id
-      },
-      id,
-      dispatch,
-      type: SET_TWEETS,
-      key: 'currentTweetReplies'
-    }).catch(err => {
       console.log(err)
     })
   }
@@ -76,7 +57,7 @@ const TweetsProvider = ({ children }) => {
     })
     closeNewTweetDialog();
     if (isReply) {
-      await Tweets.doc(tweet.repliedTo).update({
+      Tweets.doc(tweet.repliedTo).update({
         replies: firebase.firestore.FieldValue.increment(1)
       })
       closeNewReplyDialog();
@@ -125,7 +106,6 @@ const TweetsProvider = ({ children }) => {
   const value = {
     fetchTweets,
     fetchTweet,
-    fetchTweetReplies,
     addTweet,
     deleteTweet,
     openNewTweetDialog,

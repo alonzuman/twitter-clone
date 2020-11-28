@@ -16,7 +16,6 @@ const Auth = () => {
     auth.signInWithPopup(provider);
   }
 
-
   if (user) {
     return <Redirect to='/' />
   } else if (!loading) {
