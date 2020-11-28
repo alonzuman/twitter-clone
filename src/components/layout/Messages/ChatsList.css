@@ -1,0 +1,7 @@
+.chatsList {
+  flex: 4;
+}
+
+.chatList__item {
+  list-style: none;
+}

@@ -25,13 +25,14 @@
 
 .navbarItem__icon {
   fill: inherit;
+  line-height: 1;
 }
 
 .navbarItem__label {
   margin-left: 16px;
-  font-size: 18px;
+  font-size: 1.3rem;
   color: inherit;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 @media (max-width: 1024px) {

@@ -1,6 +1,7 @@
 .avatar__base {
   border-radius: 50%;
   object-fit: cover;
+  background-color: var(--bg-01);
 }
 
 .avatar--xs {

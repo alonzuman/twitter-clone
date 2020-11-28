@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { TweetsContext } from '../../../contexts/TweetsContext';
 import { UsersContext } from '../../../contexts/UsersContext';
+import { displaySmallNums } from '../../../utils/maths';
 import Avatar from '../../avatars/Avatar/Avatar';
 import TweetsList from '../../lists/TweetsList/TweetsList';
 import Skeleton from '../../loaders/Spinner/Skeleton';
@@ -26,7 +27,7 @@ const Profile = ({ match }) => {
     <div className='profile__container'>
       <Header
         title={fetchingUser ? <Skeleton height={18} width={144} /> : displayName}
-        subtitle={fetchingUser ? <Skeleton height={12} width={96} /> : `${currentUserTweets?.length} Tweets`}
+        subtitle={fetchingUser ? <Skeleton height={12} width={96} /> : displaySmallNums(currentUserTweets?.length, 'Tweet')}
         backButton
       />
       <ProfileHero

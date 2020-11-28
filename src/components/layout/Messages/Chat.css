@@ -1,0 +1,11 @@
+.chat {
+  flex: 8;
+  display: flex;
+  max-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chat__messages {
+  overflow: scroll;
+}

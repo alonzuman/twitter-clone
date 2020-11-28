@@ -1,7 +1,7 @@
 import React from 'react';
 import './IconButton.css';
 
-const IconButton = ({ children, onClick = null, className, size = 'sm', ...rest }) => {
+const IconButton = ({ children, variant = 'default', onClick = null, className, size = 'sm', ...rest }) => {
   const handleClick = e => {
     if (onClick) {
       e.preventDefault();
@@ -10,7 +10,7 @@ const IconButton = ({ children, onClick = null, className, size = 'sm', ...rest 
   }
 
   return (
-    <button className={`baseFocus iconButton__container iconButton--${size} ${className}`} onClick={handleClick} {...rest}>
+    <button className={`baseFocus iconButton__container iconButton--${size} ${className} iconButton--${variant}`} onClick={handleClick} {...rest}>
       {children}
     </button>
   )

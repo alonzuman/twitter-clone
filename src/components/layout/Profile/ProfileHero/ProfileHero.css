@@ -66,3 +66,14 @@
   color: var(--text-light);
   margin-right: 24px;
 }
+
+.profileHero__controls {
+  display: flex;
+}
+
+.profileHero__controlsIcon {
+  margin-right: 8px;
+  height: 40px;
+  fill: var(--primary-main);
+  width: 40px;
+}

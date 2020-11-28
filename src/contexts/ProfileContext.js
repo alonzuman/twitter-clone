@@ -52,6 +52,7 @@ const ProfileProvider = ({ children }) => {
           username: faker.name.firstName(),
           avatar: 'https://gravatar.com/avatar/fc2e138321e1a579e919902be761c7fa?s=400&d=robohash&r=x',
           isAnonymous,
+          bio: faker.lorem.paragraph(),
           following: [],
           followers: [],
           createdAt: Date.now()

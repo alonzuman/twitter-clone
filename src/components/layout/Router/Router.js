@@ -13,6 +13,8 @@ import Sidebar from '../Sidebar/Sidebar';
 import TweetPage from '../TweetPage/TweetPage';
 import ProtectedRoute from './ProtectedRoute'
 import './Router.css';
+import Messages from '../Messages/Messages';
+import MessagesProvider from '../../../contexts/MessagesContext';
 
 const Router = () => {
   const { user, isFetching } = useContext(ProfileContext);
@@ -23,26 +25,29 @@ const Router = () => {
 
   return (
     <TweetsProvider>
-      <BrowserRouter>
-        <Dialogs />
-        <div className="app__container">
-          <Navbar />
-          <Switch>
-            {(isFetching || !user) && <SplashScreen />}
-            <ProtectedRoute exact path='/' component={() => <Redirect to='/home' />} />
-            <ProtectedRoute path='/home' component={Feed} />
-            <ProtectedRoute exact path='/:username' component={Profile} />
-            <ProtectedRoute path='/tweets/:tweetId' component={TweetPage} />
-            <Route path='/sign-in' component={Auth} />
-          </Switch>
-          <Suspense fallback={<div className='sidebar__fallback' />}>
-            <Sidebar />
-          </Suspense>
-          <Suspense fallback={<div className='footer__fallback' />}>
-            <Footer />
-          </Suspense>
-        </div>
-      </BrowserRouter>
+      <MessagesProvider>
+        <BrowserRouter>
+          <Dialogs />
+          <div className="app__container">
+            <Navbar />
+            <Switch>
+              {(isFetching || !user) && <SplashScreen />}
+              <ProtectedRoute exact path='/' component={() => <Redirect to='/home' />} />
+              <ProtectedRoute path='/home' component={Feed} />
+              <ProtectedRoute path='/messages' component={Messages} />
+              <ProtectedRoute path='/tweets/:tweetId' component={TweetPage} />
+              <ProtectedRoute exact path='/:username' component={Profile} />
+              <Route path='/sign-in' component={Auth} />
+            </Switch>
+            <Suspense fallback={<div className='sidebar__fallback' />}>
+              <Sidebar />
+            </Suspense>
+            <Suspense fallback={<div className='footer__fallback' />}>
+              <Footer />
+            </Suspense>
+          </div>
+        </BrowserRouter>
+      </MessagesProvider>
     </TweetsProvider>
   )
 }

@@ -7,3 +7,11 @@ export const displayBigNums = (num) => {
     return `${num}`
   }
 }
+
+export const displaySmallNums = (num, str) => {
+  if (num === 1) {
+    return `${num} ${str}`
+  } else {
+    return `${num} ${str}s`
+  }
+}
