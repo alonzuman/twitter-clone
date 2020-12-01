@@ -11,10 +11,10 @@ const FooterTweetButton = () => {
   const history = useHistory();
 
   history.listen((location) => {
-    if (location.pathname === '/messages') {
-      setDisplay(false);
-    } else {
+    if (location.pathname === '/home') {
       setDisplay(true);
+    } else {
+      setDisplay(false);
     }
   })
 
