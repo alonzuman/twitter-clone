@@ -18,6 +18,7 @@ const MessagesProvider = ({ children }) => {
     dispatch({
       type: IS_FETCHING
     })
+
     Chats.where('participants', 'array-contains', uid).orderBy('updatedAt', 'desc').onSnapshot(snapshot => {
       let data = {}
       snapshot.docs.forEach(doc => {

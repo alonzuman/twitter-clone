@@ -69,3 +69,16 @@
     padding-bottom: calc(16px + env(safe-area-inset-bottom));
   }
 }
+
+.chat__headerActions {
+  display: flex;
+  align-items: center;
+}
+
+.chat__headerBackButton {
+  fill: var(--text-main);
+}
+
+.chat__headerAvatar {
+  margin-left: 8px;
+}

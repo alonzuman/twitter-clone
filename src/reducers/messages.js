@@ -19,7 +19,7 @@ const messagesReducer = (state, action) => {
     case SET_ALL:
       return {
         ...state,
-        chats: { ...state.chats, ...payload },
+        chats: payload,
         isFetching: false,
         isFetched: true
       }

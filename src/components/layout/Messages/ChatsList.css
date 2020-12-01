@@ -1,5 +1,6 @@
 .chatsList {
   flex: 4;
+  overflow: hidden;
 }
 
 .chatList__item {
@@ -9,4 +10,10 @@
 .chatsList__spinner {
   fill: var(--primary-main);
   margin-top: 64px;
+}
+
+.chatsList__list {
+  padding-bottom: 96px;
+  height: 100%;
+  overflow: scroll;
 }

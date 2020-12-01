@@ -1,5 +1,6 @@
 .profile {
   display: flex;
+  height: 100%;
 }
 
 .profile__container {

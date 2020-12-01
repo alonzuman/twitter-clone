@@ -47,10 +47,10 @@ const Chat = ({ onBack }) => {
   }
 
   const headerAction = (
-    <>
-      {onBack && <IconButton onClick={onBack}><ArrowLeftIcon /></IconButton>}
-      {!onBack && <Avatar src={currentChatUser?.avatar} />}
-    </>
+    <div className='chat__headerActions'>
+      {onBack && <IconButton className='chat__headerBackButton' onClick={onBack}><ArrowLeftIcon /></IconButton>}
+      <Avatar className='chat__headerAvatar' size='xs' src={currentChatUser?.avatar} />
+    </div>
   )
 
   return (
