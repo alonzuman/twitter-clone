@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import ArrowLeftIcon from '../../../assets/icons/ArrowLeftIcon';
 import SendIcon from '../../../assets/icons/SendIcon';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import useProfile from '../../../hooks/useProfile';
@@ -10,7 +11,7 @@ import Header from '../Header/Header';
 import './Chat.css';
 import ChatMessage from './ChatMessage';
 
-const Chat = () => {
+const Chat = ({ onBack }) => {
   const { chats, getChatMessages, sendMessage, isFetching } = useContext(MessagesContext);
   const [newMessage, setNewMessage] = useState('');
   const history = useHistory()
@@ -18,8 +19,8 @@ const Chat = () => {
   const bottomRef = useRef(null);
   const chatId = history.location.pathname.split('/')[2];
   const currentChat = chats[chatId];
-  const messages = currentChat.messages;
-  const currentChatUser = currentChat.participantsData.find(user => user.id !== uid)
+  const messages = currentChat?.messages;
+  const currentChatUser = currentChat?.participantsData?.find(user => user.id !== uid)
 
   const scrollIntoView = () => {
     if (bottomRef && messages) {
@@ -40,18 +41,23 @@ const Chat = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     await sendMessage(uid, chatId, newMessage)
-    if (messages?.length === 0) {
-      getChatMessages(chatId);
-    }
+    getChatMessages(chatId);
     setNewMessage('')
     scrollIntoView();
   }
 
+  const headerAction = (
+    <>
+      {onBack && <IconButton onClick={onBack}><ArrowLeftIcon /></IconButton>}
+      {!onBack && <Avatar src={currentChatUser?.avatar} />}
+    </>
+  )
+
   return (
     <div className='chat'>
-      <Header title={currentChatUser.displayName} action={<Avatar src={currentChatUser.avatar} size='xs' />} />
+      <Header title={currentChatUser?.displayName} action={headerAction} size='xs' />
       <ul id='chatMessages' className='chat__messages'>
-        {!messages && <Spinner className='chat__spinner' size='lg' />}
+        {!currentChat && <Spinner className='chat__spinner' size='lg' />}
         {messages && messages?.map(({ content, sender, createdAt, read, id }) => <ChatMessage key={id} id={id} content={content} sender={sender} createdAt={createdAt} read={read} />)}
         <div ref={bottomRef} />
       </ul>

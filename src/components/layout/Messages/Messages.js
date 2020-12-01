@@ -1,16 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import useProfile from '../../../hooks/useProfile';
-import Chat from './Chat';
-import ChatsList from './ChatsList';
+import useWindowSize from '../../../hooks/useWindowSize';
+import DesktopMessages from './DesktopMessages';
 import './Messages.css';
+import MobileMessages from './MobileMessages';
 
 const Messages = () => {
-  const history = useHistory();
-  const [chatId, setChatId] = useState(history.location.pathname.split('/')[2])
-  const { getChats, isFetched, chats } = useContext(MessagesContext)
+  const { getChats, isFetched } = useContext(MessagesContext)
   const { uid } = useProfile();
+  const { width } = useWindowSize();
 
   useEffect(() => {
     if (!isFetched) {
@@ -18,20 +17,12 @@ const Messages = () => {
     }
   }, [])
 
-  useEffect(() => {
-    if (isFetched && chats && !chatId) {
-      const firstChatId = Object.keys(chats)[0];
-      setChatId(firstChatId)
-      history.push(`/messages/${firstChatId}`)
-    }
-  }, [isFetched])
 
-  return (
-    <div className='messages'>
-      <ChatsList />
-      {chatId && chats && <Chat />}
-    </div>
-  )
+  if (width <= 768) {
+    return <MobileMessages />
+  } else {
+    return <DesktopMessages />
+  }
 }
 
 export default Messages

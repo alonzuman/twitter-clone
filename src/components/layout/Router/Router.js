@@ -22,12 +22,16 @@ const Router = () => {
     return <SplashScreen />
   }
 
+  const containerStyle = {
+    height: window.innerHeight
+  }
+
   return (
     <TweetsProvider>
       <MessagesProvider>
         <BrowserRouter>
           <Dialogs />
-          <div className="app__container">
+          <div style={containerStyle} className="app__container">
             <Navbar />
             <Switch>
               {(isFetching || !user) && <SplashScreen />}

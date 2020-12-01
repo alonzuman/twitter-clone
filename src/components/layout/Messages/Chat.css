@@ -16,6 +16,7 @@
 .chat__footer {
   padding: 12px;
   width: 100%;
+  z-index: 99;
   border-top: 1px solid var(--border-00);
 }
 
@@ -52,4 +53,10 @@
 .chat__spinner {
   margin-top: 64px;
   fill: var(--primary-main);
+}
+
+@media (max-width: 768px) {
+  .chat {
+    height: 100%;
+  }
 }
