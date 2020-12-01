@@ -1,6 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { TweetsContext } from '../../../contexts/TweetsContext';
 import { UsersContext } from '../../../contexts/UsersContext';
+import useProfile from '../../../hooks/useProfile';
 import { displaySmallNums } from '../../../utils/maths';
 import Avatar from '../../avatars/Avatar/Avatar';
 import TweetsList from '../../lists/TweetsList/TweetsList';
@@ -11,6 +12,7 @@ import './Profile.css';
 import ProfileHero from './ProfileHero/ProfileHero';
 
 const Profile = ({ match }) => {
+  const { username: personalUsername } = useProfile();
   const { username } = match.params;
   const { fetchUserByUsername, currentUser, isFetching: fetchingUser, isFetched: fetchedUser } = useContext(UsersContext);
   const { fetchTweets, tweets: { currentUserTweets }, isFetching: fetchingTweets } = useContext(TweetsContext);
@@ -30,7 +32,7 @@ const Profile = ({ match }) => {
         <Header
           title={fetchingUser ? <Skeleton height={18} width={144} /> : displayName}
           subtitle={fetchingUser ? <Skeleton height={12} width={96} /> : displaySmallNums(currentUserTweets?.length, 'Tweet')}
-          backButton
+          backButton={username !== personalUsername}
         />
         <ProfileHero
           uid={uid}

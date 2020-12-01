@@ -12,7 +12,7 @@ import './Chat.css';
 import ChatMessage from './ChatMessage';
 
 const Chat = ({ onBack }) => {
-  const { chats, getChatMessages, sendMessage, isFetching } = useContext(MessagesContext);
+  const { chats, getChatMessages, sendMessage, isFetchingMessages, isFetchedMessages } = useContext(MessagesContext);
   const [newMessage, setNewMessage] = useState('');
   const history = useHistory()
   const { uid } = useProfile();
@@ -24,7 +24,7 @@ const Chat = ({ onBack }) => {
 
   const scrollIntoView = () => {
     if (bottomRef && messages) {
-      bottomRef.current.scrollIntoView({ behavior: 'smooth' });
+      bottomRef?.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }
 
@@ -36,7 +36,7 @@ const Chat = ({ onBack }) => {
 
   useEffect(() => {
     scrollIntoView();
-  }, [])
+  }, [messages])
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -56,15 +56,16 @@ const Chat = ({ onBack }) => {
   return (
     <div className='chat'>
       <Header title={currentChatUser?.displayName} action={headerAction} size='xs' />
+      {isFetchingMessages && !messages && <Spinner className='chat__spinner' size='md' />}
+      {isFetchedMessages &&
       <ul id='chatMessages' className='chat__messages'>
-        {!currentChat && <Spinner className='chat__spinner' size='lg' />}
-        {messages && messages?.map(({ content, sender, createdAt, read, id }) => <ChatMessage key={id} id={id} content={content} sender={sender} createdAt={createdAt} read={read} />)}
+        {messages?.map(({ content, sender, createdAt, read, id }) => <ChatMessage key={id} id={id} content={content} sender={sender} createdAt={createdAt} read={read} />)}
         <div ref={bottomRef} />
-      </ul>
+      </ul>}
       <div className='chat__footer'>
         <form className='chat__inputForm' onSubmit={handleSubmit}>
           <input className='chat__inputField' value={newMessage} onChange={e => setNewMessage(e.target.value)} placeholder='type in yo msg' />
-          <IconButton disabled={isFetching} className='chat__sendButton' type='submit'>
+          <IconButton disabled={isFetchingMessages} className='chat__sendButton' type='submit'>
             <SendIcon className='chat__sendIcon' />
           </IconButton>
         </form>

@@ -3,6 +3,7 @@ import { initialState } from '../contexts/MessagesContext';
 export const IS_FETCHING = 'MESSAGES/IS_FETCHING';
 export const SET_ALL = 'MESSAGES/SET_ALL';
 export const SET_MESSAGES = 'MESSAGES/SET_MESSAGES';
+export const IS_FETCHING_MESSAGES = 'MESSAGES/IS_FETCHING_MESSAGES';
 export const SET_ONE = 'MESSAGES/SET_ONE';
 export const ERROR = 'MESSAGES/ERROR';
 
@@ -16,14 +17,24 @@ const messagesReducer = (state, action) => {
         isFetched: false,
         isFetching: true
       }
+    case IS_FETCHING_MESSAGES:
+      console.log('fetching messages')
+      return {
+        ...state,
+        isFetchedMessages: false,
+        isFetchingMessages: true
+      }
     case SET_ALL:
       return {
         ...state,
         chats: payload,
+        isFetchingMessages: false,
+        isFetchedMessages: false,
         isFetching: false,
         isFetched: true
       }
     case SET_MESSAGES:
+      console.log('fetched messages')
       return {
         ...state,
         chats: {
@@ -34,7 +45,9 @@ const messagesReducer = (state, action) => {
           }
         },
         isFetching: false,
-        isFetched: true
+        isFetched: true,
+        isFetchingMessages: false,
+        isFetchedMessages: true,
       }
     case SET_ONE:
       return {

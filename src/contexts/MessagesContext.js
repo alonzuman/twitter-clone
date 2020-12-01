@@ -1,11 +1,13 @@
 import React, { createContext, useReducer } from 'react'
 import { db } from '../firebase';
-import messagesReducer, { SET_ALL, IS_FETCHING, SET_MESSAGES, ERROR, SET_ONE } from '../reducers/messages';
+import messagesReducer, { SET_ALL, IS_FETCHING, SET_MESSAGES, IS_FETCHING_MESSAGES, ERROR, SET_ONE } from '../reducers/messages';
 const Chats = db.collection('chats');
 
 export const initialState = {
   isFetching: false,
   isFetched: false,
+  isFetchingMessages: false,
+  isFetchedMessages: false,
   chats: {},
 }
 
@@ -36,7 +38,7 @@ const MessagesProvider = ({ children }) => {
 
   const getChatMessages = (chatId) => {
     dispatch({
-      type: IS_FETCHING
+      type: IS_FETCHING_MESSAGES
     })
 
     Chats.doc(chatId).get().then(snapshot => {
