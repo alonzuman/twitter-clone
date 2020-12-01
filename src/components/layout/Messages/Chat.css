@@ -59,4 +59,13 @@
   .chat {
     height: 100%;
   }
+
+  .chat__footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--bg-00);
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  }
 }
