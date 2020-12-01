@@ -4,11 +4,15 @@ import ArrowLeftIcon from '../../../assets/icons/ArrowLeftIcon';
 import IconButton from '../../buttons/IconButton/IconButton';
 import './Header.css'
 
-const Header = ({ title, subtitle = '', backButton = false }) => {
+const Header = ({ title, subtitle = '', action, backButton = false }) => {
   const { goBack } = useHistory();
 
   return (
     <header className='header'>
+      {action &&
+        <div className='header__backButtonContainer'>
+          {action}
+        </div>}
       {backButton &&
         <div className='header__backButtonContainer'>
           <IconButton className='header__backButton' onClick={goBack}><ArrowLeftIcon className='header__backButtonIcon' /></IconButton>

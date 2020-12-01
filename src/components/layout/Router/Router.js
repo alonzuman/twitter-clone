@@ -4,17 +4,16 @@ import { ProfileContext } from '../../../contexts/ProfileContext';
 import TweetsProvider from '../../../contexts/TweetsContext';
 import Auth from '../Auth/Auth';
 import Dialogs from '../Dialogs.js/Dialogs';
-import Feed from '../Feed/Feed';
 import Footer from '../Footer/Footer';
 import SplashScreen from '../SplashScreen/SplashScreen';
 import Navbar from '../Navbar/Navbar';
 import Profile from '../Profile/Profile';
-import Sidebar from '../Sidebar/Sidebar';
 import TweetPage from '../TweetPage/TweetPage';
 import ProtectedRoute from './ProtectedRoute'
 import './Router.css';
 import Messages from '../Messages/Messages';
 import MessagesProvider from '../../../contexts/MessagesContext';
+import Home from '../Home/Home';
 
 const Router = () => {
   const { user, isFetching } = useContext(ProfileContext);
@@ -33,15 +32,12 @@ const Router = () => {
             <Switch>
               {(isFetching || !user) && <SplashScreen />}
               <ProtectedRoute exact path='/' component={() => <Redirect to='/home' />} />
-              <ProtectedRoute path='/home' component={Feed} />
+              <ProtectedRoute path='/home' component={Home} />
               <ProtectedRoute path='/messages' component={Messages} />
               <ProtectedRoute path='/tweets/:tweetId' component={TweetPage} />
               <ProtectedRoute exact path='/:username' component={Profile} />
               <Route path='/sign-in' component={Auth} />
             </Switch>
-            <Suspense fallback={<div className='sidebar__fallback' />}>
-              <Sidebar />
-            </Suspense>
             <Suspense fallback={<div className='footer__fallback' />}>
               <Footer />
             </Suspense>

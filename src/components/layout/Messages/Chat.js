@@ -1,41 +1,70 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import SendIcon from '../../../assets/icons/SendIcon';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import useProfile from '../../../hooks/useProfile';
+import Avatar from '../../avatars/Avatar/Avatar';
+import IconButton from '../../buttons/IconButton/IconButton';
+import Spinner from '../../loaders/Spinner/Spinner';
+import Header from '../Header/Header';
 import './Chat.css';
 import ChatMessage from './ChatMessage';
 
 const Chat = () => {
-  const { chats, getChatMessages, isFetched, activeChatId, sendMessage } = useContext(MessagesContext);
-  const { uid: currentUserId } = useProfile();
+  const { chats, getChatMessages, sendMessage, isFetching } = useContext(MessagesContext);
   const [newMessage, setNewMessage] = useState('');
-  const chat = chats?.find(chat => chat.id === activeChatId);
+  const history = useHistory()
+  const { uid } = useProfile();
+  const bottomRef = useRef(null);
+  const chatId = history.location.pathname.split('/')[2];
+  const currentChat = chats[chatId];
+  const messages = currentChat.messages;
+  const currentChatUser = currentChat.participantsData.find(user => user.id !== uid)
+
+  const scrollIntoView = () => {
+    if (bottomRef && messages) {
+      bottomRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 
   useEffect(() => {
-    if (isFetched && chats.length !== 0) {
-      getChatMessages(activeChatId || chats[0]?.id)
+    if (chatId) {
+      getChatMessages(chatId);
     }
-  }, [isFetched, activeChatId])
+  }, [history.location.pathname])
 
-  const handleSend = () => {
-    sendMessage(currentUserId, chat.participants.filter(id => id !== currentUserId), newMessage)
+  useEffect(() => {
+    scrollIntoView();
+  }, [])
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    await sendMessage(uid, chatId, newMessage)
+    if (messages?.length === 0) {
+      getChatMessages(chatId);
+    }
     setNewMessage('')
+    scrollIntoView();
   }
 
-  if (chat) {
-    return (
-      <div className='chat'>
-        <ul className='chat__messages'>
-          {chat.messages.map(({ content, sender, createdAt, read, id }) => <ChatMessage key={id} id={id} content={content} sender={sender} createdAt={createdAt} read={read} />)}
-        </ul>
-        <div className='chat__footer'>
-          <input value={newMessage} onChange={e => setNewMessage(e.target.value)} placeholder='type in yo msg' />
-          <button onClick={handleSend}>Send</button>
-        </div>
+  return (
+    <div className='chat'>
+      <Header title={currentChatUser.displayName} action={<Avatar src={currentChatUser.avatar} size='xs' />} />
+      <ul id='chatMessages' className='chat__messages'>
+        {!messages && <Spinner className='chat__spinner' size='lg' />}
+        {messages && messages?.map(({ content, sender, createdAt, read, id }) => <ChatMessage key={id} id={id} content={content} sender={sender} createdAt={createdAt} read={read} />)}
+        <div ref={bottomRef} />
+      </ul>
+      <div className='chat__footer'>
+        <form className='chat__inputForm' onSubmit={handleSubmit}>
+          <input className='chat__inputField' value={newMessage} onChange={e => setNewMessage(e.target.value)} placeholder='type in yo msg' />
+          <IconButton disabled={isFetching} className='chat__sendButton' type='submit'>
+            <SendIcon className='chat__sendIcon' />
+          </IconButton>
+        </form>
       </div>
-    )
-  } else {
-    return <h1>Empty state</h1>
-  }
+    </div>
+  )
 }
 
 export default Chat

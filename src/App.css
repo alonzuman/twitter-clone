@@ -14,21 +14,12 @@
 
 .main__wrapper {
   flex: 12;
-  max-width: 600px;
+  /* max-width: 600px; */
   border-left: 1px solid var(--border-01);
   border-right: 1px solid var(--border-01);
 }
 
-.sideBar__wrapper {
-  flex: 4;
-  background-color: var(--bg-00);
-}
-
 @media (max-width: 1024px) {
-  .sideBar__wrapper {
-    display: none;
-  }
-
   .nav__wrapper {
     width: 80px;
     flex: none;

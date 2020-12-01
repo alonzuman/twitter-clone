@@ -18,7 +18,7 @@ const Feed = () => {
   }, [])
 
   return (
-    <div className='feed__container'>
+    <div className='feed'>
       <Header title='Home' />
       <div className="feed__tweet">
         <Tweet />

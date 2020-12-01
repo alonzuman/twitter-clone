@@ -1,16 +1,21 @@
 import React, { useContext } from 'react';
 import { MessagesContext } from '../../../contexts/MessagesContext';
-import useProfile from '../../../hooks/useProfile';
+import Spinner from '../../loaders/Spinner/Spinner';
+import Header from '../Header/Header';
+import ChatCard from './ChatCard';
 import './ChatsList.css';
 
 const ChatsList = () => {
-  const { chats, handleActiveChatId } = useContext(MessagesContext);
-  const { uid } = useProfile();
+  const { chats, isFetched, isFetching } = useContext(MessagesContext);
 
   return (
     <div className='chatsList'>
+      <Header title='Messages' />
       <ul className='chatsList__list'>
-        {chats?.map(chat => <li className='chatList__item' onClick={() => handleActiveChatId(chat.id)}>{chat.participants.filter(id => id !== uid)}</li>)}
+        {!chats && <Spinner size='lg' className='chatsList__spinner' />}
+        {chats && Object.keys(chats)?.map(chat => {
+          return <ChatCard key={chat} chatId={chat} />
+        })}
       </ul>
     </div>
   )

@@ -2,8 +2,8 @@ import { initialState } from '../contexts/MessagesContext';
 
 export const IS_FETCHING = 'MESSAGES/IS_FETCHING';
 export const SET_ALL = 'MESSAGES/SET_ALL';
+export const SET_MESSAGES = 'MESSAGES/SET_MESSAGES';
 export const SET_ONE = 'MESSAGES/SET_ONE';
-export const SET_ACTIVE_CHAT_ID = 'MESSAGES/SET_ACTIVE_CHAT_ID';
 export const ERROR = 'MESSAGES/ERROR';
 
 const messagesReducer = (state, action) => {
@@ -19,14 +19,22 @@ const messagesReducer = (state, action) => {
     case SET_ALL:
       return {
         ...state,
-        chats: [...payload],
+        chats: { ...state.chats, ...payload },
         isFetching: false,
         isFetched: true
       }
-    case SET_ACTIVE_CHAT_ID:
+    case SET_MESSAGES:
       return {
         ...state,
-        activeChatId: payload
+        chats: {
+          ...state.chats,
+          [payload.id]: {
+            ...state.chats[payload.id],
+            messages: payload.messages
+          }
+        },
+        isFetching: false,
+        isFetched: true
       }
     case SET_ONE:
       return {

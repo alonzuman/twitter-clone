@@ -1,13 +1,12 @@
 import React, { createContext, useReducer } from 'react'
 import { db } from '../firebase';
-import messagesReducer, { SET_ALL, IS_FETCHING, ERROR, SET_ONE, SET_ACTIVE_CHAT_ID } from '../reducers/messages';
+import messagesReducer, { SET_ALL, IS_FETCHING, SET_MESSAGES, ERROR, SET_ONE } from '../reducers/messages';
 const Chats = db.collection('chats');
 
 export const initialState = {
   isFetching: false,
   isFetched: false,
-  chats: [],
-  activeChatId: ''
+  chats: {},
 }
 
 export const MessagesContext = createContext({});
@@ -19,11 +18,12 @@ const MessagesProvider = ({ children }) => {
     dispatch({
       type: IS_FETCHING
     })
-    Chats.where('participants', 'array-contains', uid).onSnapshot(snapshot => {
-      const data = snapshot.docs.map(doc => {
-        return {
-          id: doc.id,
-          ...doc.data()
+    Chats.where('participants', 'array-contains', uid).orderBy('updatedAt', 'desc').onSnapshot(snapshot => {
+      let data = {}
+      snapshot.docs.forEach(doc => {
+        return data = {
+          ...data,
+          [doc.id]: { ...doc.data() }
         }
       })
       dispatch({
@@ -33,60 +33,58 @@ const MessagesProvider = ({ children }) => {
     })
   }
 
-  const sendMessage = (sender, receiver, content) => {
-    const chatId = `${sender}-${receiver}`;
+  const getChatMessages = (chatId) => {
+    dispatch({
+      type: IS_FETCHING
+    })
+
     Chats.doc(chatId).get().then(snapshot => {
-      if (!snapshot.exists) {
-        Chats.doc(chatId).set({
-          createdAt: Date.now(),
-          participants: [sender, receiver],
-        }, { merge: true })
+      if (snapshot.exists) {
+        Chats.doc(chatId).collection('messages').orderBy('createdAt', 'asc').onSnapshot(snapshot => {
+          const messages = snapshot.docs.map(doc => { return { id: doc.id, ...doc.data() } })
+          dispatch({
+            type: SET_MESSAGES,
+            payload: {
+              id: chatId,
+              messages
+            }
+          })
+        })
       }
     })
-      .then(() => {
-        Chats.doc(chatId).collection('messages').add({
+  }
+
+  const startChat = (sender, receiver) => {
+    Chats.where('participants', 'array-contains', [sender.uid, receiver.uid]).get().then(snapshot => {
+      if (!snapshot.exists) {
+        const chatId = `${sender.uid}-${receiver.uid}`;
+        Chats.doc(chatId).set({
           createdAt: Date.now(),
-          content,
-          sender,
-          read: []
+          participants: [sender.uid, receiver.uid],
+          participantsData: [sender, receiver],
+          updatedAt: Date.now()
         })
-      })
-      .catch(err => console.log(err))
+      }
+    }).catch(err => console.log(err))
   }
 
-  const getChatMessages = (chatId) => {
-    const activeChat = state.chats.find(chat => chat.id === chatId);
-    Chats.doc(chatId).collection('messages').orderBy('createdAt', 'asc').onSnapshot(snapshot => {
-      const messages = snapshot.docs.map(doc => {
-        return {
-          id: doc.id,
-          ...doc.data()
-        }
-      })
-      dispatch({
-        type: SET_ONE,
-        payload: {
-          chat: {
-            ...activeChat,
-            messages,
-          }
-        }
-      })
-    })
-  }
-
-  const handleActiveChatId = (id) => {
-    dispatch({
-      type: SET_ACTIVE_CHAT_ID,
-      payload: id
-    })
+  const sendMessage = (sender, chatId, content) => {
+    Chats.doc(chatId).set({
+      updatedAt: Date.now()
+    }, { merge: true });
+    Chats.doc(chatId).collection('messages').add({
+      createdAt: Date.now(),
+      content,
+      sender,
+      read: []
+    }).catch(err => console.log(err))
   }
 
   const value = {
     getChats,
     getChatMessages,
     sendMessage,
-    handleActiveChatId,
+    startChat,
     ...state
   }
 

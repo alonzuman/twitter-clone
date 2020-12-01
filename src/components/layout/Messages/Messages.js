@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import useProfile from '../../../hooks/useProfile';
 import Chat from './Chat';
@@ -6,7 +7,9 @@ import ChatsList from './ChatsList';
 import './Messages.css';
 
 const Messages = () => {
-  const { chats, getChats, isFetching, isFetched } = useContext(MessagesContext)
+  const history = useHistory();
+  const [chatId, setChatId] = useState(history.location.pathname.split('/')[2])
+  const { getChats, isFetched, chats } = useContext(MessagesContext)
   const { uid } = useProfile();
 
   useEffect(() => {
@@ -15,10 +18,18 @@ const Messages = () => {
     }
   }, [])
 
+  useEffect(() => {
+    if (isFetched && chats && !chatId) {
+      const firstChatId = Object.keys(chats)[0];
+      setChatId(firstChatId)
+      history.push(`/messages/${firstChatId}`)
+    }
+  }, [isFetched])
+
   return (
     <div className='messages'>
       <ChatsList />
-      <Chat />
+      {chatId && chats && <Chat />}
     </div>
   )
 }

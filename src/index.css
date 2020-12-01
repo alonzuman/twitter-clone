@@ -46,7 +46,7 @@
 
   --bg-00: #12202c;
   --bg-01: #1f303f;
-  --bg-02: #fff;
+  --bg-02: #3d566a;
   --bg-03: #152735;
   --bg-04: #fff;
   --bg-05: #fff;
@@ -76,7 +76,7 @@
 
   --bg-00: #000;
   --bg-01: #15181c;
-  --bg-02: #fff;
+  --bg-02: #22262b;
   --bg-03: #15181c;
   --bg-04: #fff;
   --bg-05: #fff;
@@ -87,7 +87,7 @@
 
 .default {
   --primary-light-transparent: #e9f8ff;
-  --primary-light: #00a2f9;
+  --primary-light: #66c9ff;
   --primary-main: #00a2f9;
   --primary-dark: #0083c9;
 
@@ -106,7 +106,7 @@
 
   --bg-00: #fff;
   --bg-01: #f8f8f8;
-  --bg-02: #fff;
+  --bg-02: #e6e6e6;
   --bg-03: #f6f9fa;
   --bg-04: #fff;
   --bg-05: #fff;

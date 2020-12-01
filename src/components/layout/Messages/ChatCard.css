@@ -1,0 +1,35 @@
+.chatCard {
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  padding: 12px;
+  border-bottom: 1px solid var(--border-00);
+}
+
+.chatCard:hover {
+  background-color: var(--bg-01);
+}
+
+.chatCard__avatar {
+  margin-right: 8px;
+}
+
+.chatCard__main {
+  display: flex;
+  flex-direction: column;
+}
+
+.chatCard__header {
+  display: flex;
+  margin-bottom: 4px;
+}
+
+.chatCard__displayName {
+  color: var(--text-main);
+  margin-right: 4px;
+}
+
+.chatCard__username {
+  font-size: .85rem;
+  color: var(--text-light);
+}

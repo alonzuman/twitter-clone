@@ -5,3 +5,8 @@
 .chatList__item {
   list-style: none;
 }
+
+.chatsList__spinner {
+  fill: var(--primary-main);
+  margin-top: 64px;
+}

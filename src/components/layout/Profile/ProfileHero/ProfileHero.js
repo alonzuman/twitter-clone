@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Redirect, useHistory } from 'react-router-dom';
 import MessageIcon from '../../../../assets/icons/MessageIcon';
 import { MessagesContext } from '../../../../contexts/MessagesContext';
 import { ProfileContext } from '../../../../contexts/ProfileContext';
@@ -18,16 +19,21 @@ const ProfileHero = ({
   username,
   bio = 'Officia sint et aliqua esse velit voluptate commodo aliquip qui aute excepteur sint eiusmod qui.',
   following = [],
-  followers = []
+  followers = [],
+  currentUserProfile
 }) => {
   const [isHovering, setIsHovering] = useState(false);
-  const { uid: currentUserId } = useProfile();
+  const currentUser = useProfile();
   const { followUser, unfollowUser } = useContext(UsersContext);
-  const { sendMessage } = useContext(MessagesContext);
-  const isFollowing = followers?.includes(currentUserId)
+  const { startChat } = useContext(MessagesContext);
+  const { push } = useHistory();
+  const isFollowing = followers?.includes(currentUser.uid)
 
-  const handleMessageClick = () => sendMessage(currentUserId, uid, 'Hello');
-  const handleFollowClick = () => isFollowing ? unfollowUser(currentUserId, uid) : followUser(currentUserId, uid);
+  const handleMessageClick = () => {
+    startChat(currentUser, currentUserProfile);
+    return push(`/messages/${currentUser.uid}-${uid}`);
+  };
+  const handleFollowClick = () => isFollowing ? unfollowUser(currentUser.uid, uid) : followUser(currentUser.uid, uid);
 
   return (
     <div className='profileHero__container'>
@@ -36,14 +42,15 @@ const ProfileHero = ({
         <section className='profileHero__top'>
           {avatar}
           <div className='profileHero__controls'>
-            <IconButton onClick={handleMessageClick} variant='outlined' className='profileHero__controlsIcon'>
-              <MessageIcon />
-            </IconButton>
-            {currentUserId !== uid && (
-              <PrimaryButton onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)} variant={isFollowing ? '' : 'outlined'} onClick={handleFollowClick}>
-                {!isFollowing ? 'Follow' : (isHovering ? 'Unfollow' : 'Following')}
-              </PrimaryButton>
-            )}
+            {currentUser.uid !== uid && (
+              <>
+                <IconButton onClick={handleMessageClick} variant='outlined' className='profileHero__controlsIcon'>
+                  <MessageIcon />
+                </IconButton>
+                <PrimaryButton onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)} variant={isFollowing ? '' : 'outlined'} onClick={handleFollowClick}>
+                  {!isFollowing ? 'Follow' : (isHovering ? 'Unfollow' : 'Following')}
+                </PrimaryButton>
+              </>)}
           </div>
         </section>
         <section className='profileHero__text'>

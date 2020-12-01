@@ -1,8 +1,9 @@
-import React, { Suspense } from 'react'
+import React from 'react';
+import './Sidebar.css'
 
 const Sidebar = () => {
   return (
-    <div role="side-bar" className='sideBar__wrapper'>
+    <div role="side-bar" className='sidebar'>
       <div />
     </div>
   )

@@ -1,5 +1,10 @@
-.profile__container {
+.profile {
+  display: flex;
+}
 
+.profile__container {
+  flex: 8;
+  max-width: 600px;
 }
 
 .profile__header {

@@ -4,8 +4,52 @@
   max-height: 100vh;
   flex-direction: column;
   justify-content: space-between;
+  border-left: 1px solid var(--border-00);
 }
 
 .chat__messages {
   overflow: scroll;
+  padding: 12px;
+  height: 100%;
+}
+
+.chat__footer {
+  padding: 12px;
+  width: 100%;
+  border-top: 1px solid var(--border-00);
+}
+
+.chat__inputForm {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.chat__sendButton {
+  margin-left: 8px;
+}
+
+.chat__inputField {
+  width: 100%;
+  background-color: var(--bg-01);
+  border: 1px solid transparent;
+  border-radius: 32px;
+  transition: .15 s ease-in-out border;
+  color: var(--text-main);
+  font-size: 1rem;
+  padding: 6px 8px;
+}
+
+.chat__inputField:focus {
+  outline: none;
+  border: 1px solid var(--primary-main);
+}
+
+.chat__sendIcon {
+  fill: var(--primary-main);
+}
+
+.chat__spinner {
+  margin-top: 64px;
+  fill: var(--primary-main);
 }
