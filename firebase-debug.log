@@ -1,0 +1,66 @@
+[debug] [2020-12-01T14:46:05.103Z] ----------------------------------------------------------------------
+[debug] [2020-12-01T14:46:05.104Z] Command:       /usr/local/bin/node /Users/alonzuman/code/alonzuman/projects/fun/twitter-clone/node_modules/.bin/firebase deploy --only hosting
+[debug] [2020-12-01T14:46:05.105Z] CLI Version:   8.16.2
+[debug] [2020-12-01T14:46:05.105Z] Platform:      darwin
+[debug] [2020-12-01T14:46:05.105Z] Node Version:  v12.18.0
+[debug] [2020-12-01T14:46:05.106Z] Time:          Tue Dec 01 2020 16:46:05 GMT+0200 (Israel Standard Time)
+[debug] [2020-12-01T14:46:05.106Z] ----------------------------------------------------------------------
+[debug] [2020-12-01T14:46:05.106Z] 
+[debug] [2020-12-01T14:46:05.112Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-12-01T14:46:05.112Z] > authorizing via signed-in user
+[debug] [2020-12-01T14:46:05.112Z] [iam] checking project twitter-clone-7c4e2 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-12-01T14:46:05.115Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/twitter-clone-7c4e2:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-12-01T14:46:06.042Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 01 Dec 2020 14:46:05 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=567","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-01T14:46:06.045Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/twitter-clone-7c4e2  
+ 
+[debug] [2020-12-01T14:46:06.449Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 01 Dec 2020 14:46:06 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'twitter-clone-7c4e2'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2020-12-01T14:46:06.457Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/twitter-clone-7c4e2/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2020-12-01T14:46:07.798Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 01 Dec 2020 14:46:07 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[twitter-clone-7c4e2]: beginning deploy... 
+[info] i  hosting[twitter-clone-7c4e2]: found 18 files in build 
+[debug] [2020-12-01T14:46:09.091Z] [hosting] hash cache [YnVpbGQ] stored for 18 files
+[debug] [2020-12-01T14:46:09.091Z] [hosting][hash queue][FINAL] {"max":1268,"min":9,"avg":105.66666666666667,"active":0,"complete":18,"success":18,"errored":0,"retried":0,"total":18,"elapsed":1275}
+[debug] [2020-12-01T14:46:09.092Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/twitter-clone-7c4e2/versions/44325a93ad6655a5:populateFiles  
+ <request body omitted>
+[debug] [2020-12-01T14:46:10.224Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 01 Dec 2020 14:46:10 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-01T14:46:10.231Z] [hosting][populate queue][FINAL] {"max":1136,"min":1136,"avg":1136,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":1141}
+[debug] [2020-12-01T14:46:10.231Z] [hosting] uploads queued: 4
+[debug] [2020-12-01T14:46:12.637Z] [hosting][upload queue][FINAL] {"max":2411,"min":2262,"avg":2313,"active":0,"complete":4,"success":4,"errored":0,"retried":0,"total":4,"elapsed":2412}
+[info] ✔  hosting[twitter-clone-7c4e2]: file upload complete 
+[debug] [2020-12-01T14:46:12.639Z] [hosting] deploy completed after 4838ms
+[debug] [2020-12-01T14:46:12.913Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "twitter-clone-7c4e2"
+    },
+    "site": "twitter-clone-7c4e2",
+    "version": "sites/twitter-clone-7c4e2/versions/44325a93ad6655a5"
+  }
+]
+[info] i  hosting[twitter-clone-7c4e2]: finalizing version... 
+[debug] [2020-12-01T14:46:12.914Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/twitter-clone-7c4e2/versions/44325a93ad6655a5?updateMask=status  
+ {"status":"FINALIZED"}
+[debug] [2020-12-01T14:46:14.126Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 01 Dec 2020 14:46:14 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-01T14:46:14.126Z] [hosting] finalized version for twitter-clone-7c4e2: {"name":"sites/twitter-clone-7c4e2/versions/44325a93ad6655a5","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2020-12-01T14:46:07.342198Z","createUser":{"email":"alonzuman7@gmail.com"},"finalizeTime":"2020-12-01T14:46:13.997554Z","finalizeUser":{"email":"alonzuman7@gmail.com"}}
+[info] ✔  hosting[twitter-clone-7c4e2]: version finalized 
+[info] i  hosting[twitter-clone-7c4e2]: releasing new version... 
+[debug] [2020-12-01T14:46:14.128Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/twitter-clone-7c4e2/releases?version_name=sites/twitter-clone-7c4e2/versions/44325a93ad6655a5  
+ {"message":null}

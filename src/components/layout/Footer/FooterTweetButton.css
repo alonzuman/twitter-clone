@@ -1,6 +1,6 @@
 .footerTweetButton {
   position: fixed;
-  bottom: 72px;
+  bottom: calc(72px + env(safe-area-inset-bottom));
   right: 16px;
   height: 56px;
   width: 56px;
