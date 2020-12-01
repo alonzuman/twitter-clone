@@ -69,6 +69,12 @@
   }
 }
 
+@media (max-width: 500px) {
+  .chat__footer {
+    position: fixed;
+  }
+}
+
 .chat__headerActions {
   display: flex;
   align-items: center;
