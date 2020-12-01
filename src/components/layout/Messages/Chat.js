@@ -20,7 +20,7 @@ const Chat = ({ onBack }) => {
   const chatId = history.location.pathname.split('/')[2];
   const currentChat = chats[chatId];
   const messages = currentChat?.messages;
-  const currentChatUser = currentChat?.participantsData?.find(user => user.id !== uid)
+  const currentChatUser = currentChat?.participantsData?.find(user => user.uid !== uid)
 
   const scrollIntoView = () => {
     if (bottomRef && messages) {
