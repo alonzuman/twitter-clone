@@ -10,7 +10,7 @@ const MobileMessages = () => {
   const history = useHistory();
   const { chats } = useContext(MessagesContext);
   const chatId = history.location.pathname.split('/')[2];
-  const noChats = Object.keys(chats)?.length === 0;
+  const noChats = Object.keys(chats || {})?.length === 0;
 
   return (
     <>
