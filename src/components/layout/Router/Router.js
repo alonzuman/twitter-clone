@@ -23,7 +23,7 @@ const Router = () => {
   }
 
   const containerStyle = {
-    height: window.innerHeight
+    minHeight: window.innerHeight
   }
 
   return (
