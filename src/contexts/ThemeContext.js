@@ -61,7 +61,6 @@ const ThemeProvider = ({ children }) => {
       setColor('blue')
     } else {
       colors.forEach(v => document.body.classList.remove(`color--${v}`))
-      console.log('yo')
       document.body.classList.add(`color--${currentColor}`);
       setColor(currentColor);
     }

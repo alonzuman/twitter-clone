@@ -18,7 +18,6 @@ const messagesReducer = (state, action) => {
         isFetching: true
       }
     case IS_FETCHING_MESSAGES:
-      console.log('fetching messages')
       return {
         ...state,
         isFetchedMessages: false,
@@ -34,7 +33,6 @@ const messagesReducer = (state, action) => {
         isFetched: true
       }
     case SET_MESSAGES:
-      console.log('fetched messages')
       return {
         ...state,
         chats: {
