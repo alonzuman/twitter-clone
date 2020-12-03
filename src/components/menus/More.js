@@ -9,9 +9,9 @@ const More = () => {
   const { handleBackgroundChange, handleFontChange, handleColorChange, background, fontSize, color: currentColor } = useContext(ThemeContext);
 
   const backgrounds = [
+    { color: 'default', label: 'Default' },
     { color: 'dim', label: 'Dim' },
     { color: 'lights-out', label: 'Lights Out' },
-    { color: 'default', label: 'Default' }
   ]
 
   const colors = [

@@ -1,8 +1,0 @@
-.messagesEmptyState {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  flex: 10;
-  height: 100%;
-}

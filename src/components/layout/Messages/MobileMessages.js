@@ -4,7 +4,7 @@ import { MessagesContext } from '../../../contexts/MessagesContext';
 import Spinner from '../../loaders/Spinner/Spinner';
 import Chat from './Chat';
 import ChatsList from './ChatsList';
-import MessagesEmptyState from './MessagesEmptyState';
+import EmptyState from './EmptyState';
 import './MobileMessages.css';
 
 const MobileMessages = () => {
@@ -18,7 +18,7 @@ const MobileMessages = () => {
       {isFetching && <Spinner className='chat__spinner' size='md' />}
       {!noChats && chatId && <Chat onBack={() => history.push('/messages')} />}
       {!noChats && !isFetching && !chatId && <ChatsList />}
-      {noChats && !isFetching && !isFetchingMessages && <MessagesEmptyState />}
+      {noChats && !isFetching && !isFetchingMessages && <EmptyState title='No messages yet' body='Go send someone a messages nu' />}
     </>
   )
 }

@@ -1,0 +1,23 @@
+.emptyState {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  flex: 10;
+  height: 100%;
+}
+
+.emptyState__title {
+  color: var(--text-main);
+}
+
+.emptyState__body {
+  margin-top: 8px;
+  color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+  .emptyState {
+    margin-top: 64px;
+  }
+}

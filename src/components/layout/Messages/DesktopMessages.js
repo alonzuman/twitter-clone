@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import Chat from './Chat';
 import ChatsList from './ChatsList';
-import MessagesEmptyState from './MessagesEmptyState';
+import EmptyState from './EmptyState';
 
 const DesktopMessages = () => {
   const { chats } = useContext(MessagesContext)
@@ -21,7 +21,7 @@ const DesktopMessages = () => {
 
   return (
     <div className='messages'>
-      {noChats && <MessagesEmptyState />}
+      {noChats && <EmptyState title="No messages" body="Go send someone a message yo" />}
       {!noChats && <ChatsList />}
       {!noChats && activeChatId && <Chat />}
     </div>
