@@ -3,6 +3,7 @@ import { TweetsContext } from '../../../contexts/TweetsContext';
 import TweetCard from '../../cards/TweetCard/TweetCard';
 import TweetsList from '../../lists/TweetsList/TweetsList';
 import Header from '../Header/Header';
+import Sidebar from '../Sidebar/Sidebar';
 import './TweetPage.css';
 
 const TweetPage = ({ match: { params } }) => {
@@ -21,11 +22,14 @@ const TweetPage = ({ match: { params } }) => {
   }, [tweetId])
 
   return (
-    <>
-      <Header backButton title="Tweet" />
-      <TweetCard tweet={currentTweet} />
-      <TweetsList isLoading={isFetching} tweets={currentTweetReplies} />
-    </>
+    <div className='tweetPage'>
+      <div className='tweetPage__tweet'>
+        <Header backButton title="Tweet" />
+        <TweetCard tweet={currentTweet} />
+        <TweetsList isLoading={isFetching} tweets={currentTweetReplies} />
+      </div>
+      <Sidebar />
+    </div>
   )
 }
 
