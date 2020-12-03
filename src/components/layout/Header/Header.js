@@ -19,7 +19,7 @@ const Header = ({ title, subtitle = '', action, backButton = false }) => {
         </div>}
       <div className='header__text'>
         <h1 className='header__title'>{title}</h1>
-        <h5 className='header__subtitle'>{subtitle}</h5>
+        {subtitle && <h5 className='header__subtitle'>{subtitle}</h5>}
       </div>
     </header>
   )

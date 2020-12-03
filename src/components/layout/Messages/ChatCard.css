@@ -6,6 +6,10 @@
   border-bottom: 1px solid var(--border-00);
 }
 
+.chatCard:last-of-type {
+  margin-bottom: 64px;
+}
+
 .chatCard:hover {
   background-color: var(--bg-01);
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CheckIcon = ({ style, className, size }) => {
+const CheckIcon = ({ style, className, size = 24 }) => {
   return (
     <svg className={className} style={style} viewBox="0 0 24 24" height={`${size}px`}>
       <g>

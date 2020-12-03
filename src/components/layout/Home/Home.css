@@ -2,5 +2,4 @@
   display: flex;
   flex: 12;
   border-left: 1px solid var(--border-01);
-  border-right: 1px solid var(--border-01);
 }

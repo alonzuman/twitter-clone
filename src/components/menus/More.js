@@ -23,13 +23,21 @@ const More = () => {
     { color: 'green' },
   ];
 
+  const fillValues = {
+    1: '0%',
+    2: '25%',
+    3: '50%',
+    4: '75%',
+    5: '100%'
+  }
+
   return (
     <div className='more'>
       <p className='more__paragraph'>Manage your font size, color and background. These settings affect all the <br /> Twitter accounts on this browser.</p>
       <section className='more__section'>
         <h5 className='more__sectionTitle'>Font size</h5>
         <div className='more__sectionContent'>
-          <Slider renderBefore='Aa' renderAfter='Aa' step={1} min={1} max={5} onChange={handleFontChange} value={fontSize} />
+          <Slider fillValue={fillValues[fontSize]} renderBefore='Aa' renderAfter='Aa' step={1} min={1} max={5} onChange={handleFontChange} value={fontSize} />
         </div>
       </section>
       <section className='more__section'>

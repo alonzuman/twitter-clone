@@ -1,0 +1,15 @@
+.sliderTick {
+  background-color: white;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+}
+
+.sliderTick:hover {
+  box-shadow: 0px 0px 0px 8px var(--primary-light-transparent);
+}
+
+.sliderTIck--selected {
+  background-color: var(--primary-dark);
+}

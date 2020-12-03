@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: space-between;
   border-left: 1px solid var(--border-00);
+  border-right: 1px solid var(--border-00);
 }
 
 .chat__messages {
@@ -57,7 +58,7 @@
 
 @media (max-width: 768px) {
   .chat {
-    height: 100%;
+    height: 100vh;
   }
 
   .chat__footer {
@@ -70,14 +71,14 @@
 }
 
 @media (max-width: 500px) {
+  .chat {
+    height: 100%;
+    border: none;
+  }
+
   .chat__footer {
     position: fixed;
   }
-
-  .chat__messages {
-  padding-bottom: 96px;
-  padding-top: 64px;
-}
 }
 
 .chat__headerActions {

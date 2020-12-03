@@ -2,4 +2,5 @@
   flex: 4;
   background-color: var(--bg-00);
   border-left: 1px solid var(--border-00);
+  max-width: 312px;
 }

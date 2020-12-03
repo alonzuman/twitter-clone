@@ -3,7 +3,6 @@
   min-height: 100vh;
   flex: 8;
   max-width: 600px;
-  padding-bottom: 64px;
 }
 
 .feed__tweet {

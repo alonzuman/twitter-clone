@@ -13,7 +13,6 @@
 }
 
 .chatsList__list {
-  padding-bottom: 96px;
   height: 100%;
   overflow: scroll;
 }

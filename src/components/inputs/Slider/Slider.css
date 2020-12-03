@@ -20,21 +20,17 @@
 
 /* The rangeSlider itself */
 .rangeSlider {
+  z-index: 9;
+  cursor: pointer;
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
   width: 100%; /* Full-width */
   height: 8px; /* Specified height */
   border-radius: 16px;
-  background: var(--primary-light); /* Grey background */
-  outline: none; /* Remove outline */
-  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  background: transparent;
+  outline: none;
   -webkit-transition: .2s; /* 0.2 seconds transition on hover */
   transition: opacity .2s;
-}
-
-/* Mouse-over effects */
-.rangeSlider:hover {
-  opacity: 1; /* Fully shown on mouse-over */
 }
 
 /* The rangeSlider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
@@ -49,9 +45,9 @@
 }
 
 .rangeSlider::-webkit-slider-thumb:hover {
-  height: 18px;
-  width: 18px;
-  transition: height .15s ease-in-out, width .15s ease-in-out;
+  transform: scale(1.2);
+  background-color: var(--primary-main);
+  transition: scale .25s ease-in-out;
 }
 
 .rangeSlider::-moz-range-thumb {
@@ -60,4 +56,41 @@
   background: var(--primary-dark); /* Green background */
   border-radius: 50%;
   cursor: pointer; /* Cursor on hover */
+}
+
+.rangeSlider__wrapper {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.rangeSlider__ticks {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.rangeSlider__customTrack {
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  height: 6px;
+  border-radius: 12px;
+  background-color: var(--primary-light);
+}
+
+.rangeSlider__customTrackFill {
+  position: absolute;
+  width: 100%;
+  border-radius: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--primary-dark);
+  height: 6px;
 }

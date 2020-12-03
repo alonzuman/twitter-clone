@@ -4,22 +4,23 @@
   text-decoration: inherit;
 }
 
-.tweetCard__wrapper:focus {
-  outline: none;
-}
-
 .tweetCard__container {
   display: flex;
   padding: 8px 16px;
   border-top: 1px solid var(--border-01);
   transition: .25s ease-in-out background-color, .25s ease-in-out border;
   background-color: var(--bg-00);
+  margin-bottom: inherit;
 }
 
 .tweetCard__main {
   display: flex;
   width: 100%;
   flex-direction: column;
+}
+
+.tweetCard__link:last-of-type {
+  margin-bottom: 64px;
 }
 
 @media (hover: hover) and (pointer: fine) {

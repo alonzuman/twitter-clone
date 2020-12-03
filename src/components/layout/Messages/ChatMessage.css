@@ -44,3 +44,9 @@
   margin-top: 2px;
   font-size: .85rem;
 }
+
+@media (max-width: 500px) {
+  .chatMessage:last-of-type {
+    margin-bottom: 64px;
+  }
+}

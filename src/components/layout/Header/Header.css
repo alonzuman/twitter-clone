@@ -25,6 +25,8 @@
 .header__subtitle {
   color: var(--text-light);
   font-size: .8rem;
+  margin-top: 4px;
+  font-weight: 400;
 }
 
 .header__backButtonContainer {
