@@ -3,7 +3,7 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { ProfileContext } from '../../../contexts/ProfileContext';
 import TweetsProvider from '../../../contexts/TweetsContext';
 import Auth from '../Auth/Auth';
-import Dialogs from '../Dialogs.js/Dialogs';
+import Dialogs from '../Dialogs/Dialogs';
 import Footer from '../Footer/Footer';
 import SplashScreen from '../SplashScreen/SplashScreen';
 import Navbar from '../Navbar/Navbar';
@@ -14,6 +14,7 @@ import './Router.css';
 import Messages from '../Messages/Messages';
 import MessagesProvider from '../../../contexts/MessagesContext';
 import Home from '../Home/Home';
+import Container from '../Container/Container';
 
 const Router = () => {
   const { user, isFetching } = useContext(ProfileContext);
@@ -22,16 +23,12 @@ const Router = () => {
     return <SplashScreen />
   }
 
-  const containerStyle = {
-    minHeight: window.innerHeight
-  }
-
   return (
     <TweetsProvider>
       <MessagesProvider>
         <BrowserRouter>
           <Dialogs />
-          <div style={containerStyle} className="app__container">
+          <Container>
             <Navbar />
             <Switch>
               {(isFetching || !user) && <SplashScreen />}
@@ -45,7 +42,7 @@ const Router = () => {
             <Suspense fallback={<div className='footer__fallback' />}>
               <Footer />
             </Suspense>
-          </div>
+          </Container>
         </BrowserRouter>
       </MessagesProvider>
     </TweetsProvider>

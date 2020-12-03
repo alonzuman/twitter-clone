@@ -6,7 +6,6 @@ import { ProfileContext } from '../../../../contexts/ProfileContext';
 import { UsersContext } from '../../../../contexts/UsersContext';
 import useProfile from '../../../../hooks/useProfile';
 import { displayBigNums } from '../../../../utils/maths';
-import Avatar from '../../../avatars/Avatar/Avatar';
 import IconButton from '../../../buttons/IconButton/IconButton';
 import PrimaryButton from '../../../buttons/PrimaryButton/PrimaryButton';
 import './ProfileHero.css';
@@ -17,7 +16,7 @@ const ProfileHero = ({
   hero = 'https://pbs.twimg.com/profile_banners/25073877/1604214583/1500x500',
   avatar,
   username,
-  bio = 'Officia sint et aliqua esse velit voluptate commodo aliquip qui aute excepteur sint eiusmod qui.',
+  bio = '',
   following = [],
   followers = [],
   currentUserProfile

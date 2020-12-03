@@ -1,6 +1,9 @@
 .profile {
   display: flex;
+  flex: 12;
   height: 100%;
+  border-left: 1px solid var(--border-01);
+  min-height: 100vh;
 }
 
 .profile__container {

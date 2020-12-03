@@ -73,6 +73,11 @@
   .chat__footer {
     position: fixed;
   }
+
+  .chat__messages {
+  padding-bottom: 96px;
+  padding-top: 64px;
+}
 }
 
 .chat__headerActions {

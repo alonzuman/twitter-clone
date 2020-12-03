@@ -1,4 +1,7 @@
 .messages {
   display: flex;
-  height: 100%;
+  flex: 12;
+  max-height: 100vh;
+  overflow: inherit;
+  border-left: 1px solid var(--border-01);
 }

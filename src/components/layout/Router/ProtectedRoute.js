@@ -10,11 +10,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
   if (loading) {
     return <Loading size='lg' />
   } else if (user) {
-    return (
-      <main role="main" className="main__wrapper">
-        <Route {...rest} component={props => <Component {...props} />} />
-      </main>
-    )
+    return <Route {...rest} component={props => <Component {...props} />} />
   } else {
     return <Redirect to='/sign-in' />
   }
