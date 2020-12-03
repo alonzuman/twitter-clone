@@ -1,0 +1,21 @@
+.colorButton {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.colorButton:hover {
+
+}
+
+.colorButton:focus {
+  outline: none;
+}
+
+.colorButton__icon {
+  fill: #fff;
+  height: 24px;
+  width: 24px;
+}

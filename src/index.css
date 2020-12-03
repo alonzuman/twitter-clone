@@ -3,6 +3,15 @@
   padding: 0;
   box-sizing: border-box;
   transition: background-color .25s ease-in-out, .25s ease-in-out color, .25s ease-in-out border;
+  --red-light-transparent: #f4005e19;
+  --red-main: #f4005c;
+
+  --red: #f4005c;
+  --blue: #00a2f9;
+  --orange: #ff4f00;
+  --purple: #8243cb;
+  --green: #00c357;
+  --yellow: #ffaa00;
 }
 
 .font-1 {
@@ -25,15 +34,50 @@
   font-size: 20px;
 }
 
-.dim {
+.color--blue {
   --primary-light-transparent: #00a2f929;
   --primary-light: #00a2f9;
   --primary-main: #00a2f9;
-  --primary-dark: #0083c9;
+  --primary-dark: #00a2f9;
+}
 
-  --red-light-transparent: #f4005e19;
-  --red-main: #f4005c;
+.color--yellow {
+  --primary-light-transparent: #ffc95c29;
+  --primary-light: #ffc95c;
+  --primary-main: #ffaa00;
+  --primary-dark: #d18d04;
+}
 
+.color--red {
+  --primary-light-transparent: #ff498f29;
+  --primary-light: #ff498f;
+  --primary-main: #f4005c;
+  --primary-dark: #b40649;
+}
+
+.color--purple {
+  --primary-light-transparent: #9f6dd829;
+  --primary-light: #9f6dd8;
+  --primary-main: #8243cb;
+  --primary-dark: #6a2ead;
+
+}
+
+.color--orange {
+  --primary-light-transparent: #ff7f4429;
+  --primary-light: #ff7f44;
+  --primary-main: #ff4f00;
+  --primary-dark: #b93b00;
+}
+
+.color--green {
+  --primary-light-transparent: #2ac77029;
+  --primary-light: #2ac770;
+  --primary-main: #00c357;
+  --primary-dark: #079547;
+}
+
+.dim {
   --text-light: #6b7f8d;
   --text-main: #ffffff;
   --text-dark: #ffffff;
@@ -56,14 +100,6 @@
 }
 
 .lights-out {
-  --primary-light-transparent: #00a2f929;
-  --primary-light: #6cc9fa;
-  --primary-main: #00a2f9;
-  --primary-dark: #0083c9;
-
-  --red-light-transparent: #f4005e19;
-  --red-main: #f4005c;
-
   --text-light: #acacac;
   --text-main: #ffffff;
   --text-dark: #ffffff;
@@ -86,14 +122,6 @@
 }
 
 .default {
-  --primary-light-transparent: #e9f8ff;
-  --primary-light: #66c9ff;
-  --primary-main: #00a2f9;
-  --primary-dark: #0083c9;
-
-  --red-light-transparent: #f4005e19;
-  --red-main: #f4005c;
-
   --text-light: #acacac;
   --text-main: #555555;
   --text-dark: #2c2c2c;

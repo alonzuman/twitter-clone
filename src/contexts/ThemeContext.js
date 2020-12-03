@@ -13,11 +13,13 @@ const ThemeProvider = ({ children }) => {
 
     if (!currentBackground) {
       localStorage.setItem('background', 'default');
-      document.body.classList = 'default';
+      document.body.classList.add('default');
       document.body.style.backgroundColor = 'var(--bg-00)';
       setBackground('default')
     } else {
-      document.body.classList = currentBackground;
+      const backgrounds = ['default', 'lights-out', 'dim'];
+      backgrounds.map(v => document.body.classList.remove(v))
+      document.body.classList.add(currentBackground);
       document.body.style.backgroundColor = 'var(--bg-00)';
       setBackground(currentBackground);
     }
@@ -49,7 +51,25 @@ const ThemeProvider = ({ children }) => {
     setFontSize(e.target.value);
   }
 
+  useEffect(() => {
+    const currentColor = localStorage.getItem('color');
+    const colors = ['blue', 'orange', 'yellow', 'purple', 'green', 'red']
+
+    if (!currentColor) {
+      localStorage.setItem('color', 'blue');
+      document.body.classList.add('color--blue');
+      setColor('blue')
+    } else {
+      colors.forEach(v => document.body.classList.remove(`color--${v}`))
+      console.log('yo')
+      document.body.classList.add(`color--${currentColor}`);
+      setColor(currentColor);
+    }
+  }, [localStorage.getItem('color')])
+
   const handleColorChange = (color) => {
+    localStorage.setItem('color', color)
+    setColor(color)
   }
 
   const openDialog = () => setIsMoreOpen(true)
