@@ -4,6 +4,7 @@ import { MessagesContext } from '../../../contexts/MessagesContext';
 import Chat from './Chat';
 import ChatsList from './ChatsList';
 import EmptyState from './EmptyState';
+import './DesktopMessages.css';
 
 const DesktopMessages = () => {
   const { chats } = useContext(MessagesContext)
@@ -23,7 +24,9 @@ const DesktopMessages = () => {
     <div className='messages'>
       {noChats && <EmptyState title="No messages" body="Go send someone a message yo" />}
       {!noChats && <ChatsList />}
-      {!noChats && activeChatId && <Chat />}
+      <div className='messages__desktopContainer'>
+        {!noChats && activeChatId && <Chat />}
+      </div>
     </div>
   )
 }

@@ -4,8 +4,6 @@
   max-height: 100vh;
   flex-direction: column;
   justify-content: space-between;
-  border-left: 1px solid var(--border-00);
-  border-right: 1px solid var(--border-00);
 }
 
 .chat__messages {

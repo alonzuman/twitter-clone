@@ -7,7 +7,7 @@ import useProfile from '../../../hooks/useProfile';
 import Avatar from '../../avatars/Avatar/Avatar';
 import moment from 'moment';
 
-const ChatCard = ({ chatId }) => {
+const ChatCard = ({ chatId, onClick }) => {
   const { chats } = useContext(MessagesContext);
   const { uid } = useProfile();
   const { push, location } = useHistory();
@@ -16,9 +16,13 @@ const ChatCard = ({ chatId }) => {
   const { displayName, avatar, username } = currentUser;
 
   const handleClick = () => {
-    const chatUrl = `/messages/${chatId}`;
-    if (location.pathname !== chatUrl) {
-      push(chatUrl);
+    if (onClick !== null) {
+      onClick(chatId)
+    } else {
+      const chatUrl = `/messages/${chatId}`;
+      if (location.pathname !== chatUrl) {
+        push(chatUrl);
+      }
     }
   }
 

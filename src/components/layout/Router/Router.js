@@ -15,6 +15,7 @@ import Messages from '../Messages/Messages';
 import MessagesProvider from '../../../contexts/MessagesContext';
 import Home from '../Home/Home';
 import Container from '../Container/Container';
+import FooterMessenger from '../FooterMessenger/FooterMessenger';
 
 const Router = () => {
   const { user, isFetching } = useContext(ProfileContext);
@@ -39,6 +40,9 @@ const Router = () => {
               <ProtectedRoute exact path='/:username' component={Profile} />
               <Route path='/sign-in' component={Auth} />
             </Switch>
+            <Suspense fallback={<null />}>
+              <FooterMessenger />
+            </Suspense>
             <Suspense fallback={<div className='footer__fallback' />}>
               <Footer />
             </Suspense>

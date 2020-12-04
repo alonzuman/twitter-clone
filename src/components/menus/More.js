@@ -43,7 +43,7 @@ const More = () => {
       <section className='more__section'>
         <h5 className='more__sectionTitle'>Color</h5>
         <div className='more__sectionContent more__colorButtons'>
-          {colors.map(({ color }) => <ColorButton isSelected={currentColor === color} color={color} onClick={() => handleColorChange(color)} />)}
+          {colors.map(({ color }) => <ColorButton key={color} isSelected={currentColor === color} color={color} onClick={() => handleColorChange(color)} />)}
         </div>
       </section>
       <section className='more__section'>
