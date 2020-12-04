@@ -1,7 +1,5 @@
 .messages {
-  display: flex;
-  flex: 12;
-  max-height: 100vh;
-  overflow: inherit;
+  display: grid;
+  grid-template-columns: minmax(280px, 20%) auto;
   border-left: 1px solid var(--border-01);
 }

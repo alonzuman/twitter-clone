@@ -4,14 +4,6 @@
   justify-content: center;
 }
 
-.nav__wrapper {
-  flex: 6;
-  max-width: 280px;
-  display: flex;
-  justify-content: flex-end;
-  background-color: var(--bg-00);
-}
-
 .main__wrapper {
   flex: 12;
   /* max-width: 600px; */

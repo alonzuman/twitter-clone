@@ -12,7 +12,7 @@ const ChatCard = ({ chatId, onClick }) => {
   const { uid } = useProfile();
   const { push, location } = useHistory();
   const currentChat = chats[chatId];
-  const currentUser = currentChat.participantsData.find(user => user.uid !== uid)
+  const currentUser = currentChat?.participantsData?.find(user => user.uid !== uid)
   const { displayName, avatar, username } = currentUser;
 
   const handleClick = () => {

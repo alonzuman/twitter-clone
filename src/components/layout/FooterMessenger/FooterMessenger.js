@@ -60,7 +60,7 @@ const FooterMessenger = () => {
     }
   }, [isOpen])
 
-  if (isVisible && width > 500) {
+  if (history.location.pathname.split('/')[1] !== 'messages' && isVisible && width > 500) {
     return (
       <div className={`footerMessenger footerMessenger${isOpen ? '--open' : '--closed'}`}>
         <div className='footerMessenger__labelContainer'>

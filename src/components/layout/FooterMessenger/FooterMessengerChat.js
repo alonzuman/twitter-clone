@@ -5,7 +5,7 @@ import './FooterMessengerChat.css';
 const FooterMessengerChat = ({ chatId }) => {
   return (
     <div className='footerMessengerChat'>
-      <Chat customChatId={chatId} className='footerMessangerChat__chat' showHeader={false} />
+      <Chat customChatId={chatId} showHeader={false} />
     </div>
   )
 }

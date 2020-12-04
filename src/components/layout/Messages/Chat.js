@@ -50,7 +50,9 @@ const Chat = ({ onBack, customChatId = '', showHeader = true, ...rest }) => {
   return (
     <div className={`chat ${rest.className || ''}`}>
       {showHeader && <Header title={currentChatUser?.displayName} action={headerAction} size='xs' />}
-      <ChatMessages messages={messages} isFetchedMessages={isFetchedMessages} isFetchingMessages={isFetchingMessages} />
+      <div className='chat__messagesWrapper'>
+        <ChatMessages messages={messages} isFetchedMessages={isFetchedMessages} isFetchingMessages={isFetchingMessages} />
+      </div>
       <div className='chat__footer'>
         <form className='chat__inputForm' onSubmit={handleSubmit}>
           <input className='chat__inputField' value={newMessage} onChange={e => setNewMessage(e.target.value)} placeholder='type in yo msg' />

@@ -1,8 +1,20 @@
 .container {
-  display: flex;
-  width: 100%;
-  min-height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
-  justify-content: center;
+  display: grid;
   max-width: 1280px;
   margin: 0 auto;
+  min-height: 100vh;
+  grid-template-columns: minmax(auto, 280px) 1fr;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: auto 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    grid-template-columns: auto;
+    min-height: 0;
+  }
 }

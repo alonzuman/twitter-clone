@@ -1,6 +1,4 @@
 .messages__desktopContainer {
-  flex: 8;
-  height: 100%;
   border-left: 1px solid var(--border-01);
   border-right: 1px solid var(--border-01);
 }

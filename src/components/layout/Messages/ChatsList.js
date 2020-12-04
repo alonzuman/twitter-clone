@@ -13,7 +13,7 @@ const ChatsList = ({ className, showHeader = true, onClick = null }) => {
       {showHeader && <Header title='Messages' />}
       <ul className='chatsList__list'>
         {isFetching && <Spinner size='lg' className='chatsList__spinner' />}
-        {isFetched && Object.keys(chats)?.map(chat => {
+        {isFetched && chats && Object.keys(chats)?.map(chat => {
           return <ChatCard onClick={onClick} key={chat} chatId={chat} />
         })}
       </ul>
