@@ -1,5 +1,4 @@
 .messages {
   display: grid;
-  grid-template-columns: minmax(280px, 20%) auto;
-  border-left: 1px solid var(--border-01);
+  grid-template-columns: minmax(324px, 20%) auto;
 }

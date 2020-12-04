@@ -17,11 +17,19 @@ const Chat = ({ onBack, customChatId = '', showHeader = true, ...rest }) => {
   const [newMessage, setNewMessage] = useState('');
   const history = useHistory()
   const { uid } = useProfile();
-  const bottomRef = useRef(null);
   const chatId = customChatId || history.location.pathname.split('/')[2];
   const currentChat = chats[chatId];
   const messages = currentChat?.messages;
   const currentChatUser = currentChat?.participantsData?.find(user => user.uid !== uid)
+  const containerRef = useRef(null)
+
+
+  useEffect(() => {
+    if (containerRef) {
+      const scrollHeight = containerRef.current.scrollHeight;
+      containerRef.current.scrollTop = scrollHeight;
+    }
+  }, [messages])
 
   useEffect(() => {
     if (chatId && !isFetchedMessages) {
@@ -29,7 +37,9 @@ const Chat = ({ onBack, customChatId = '', showHeader = true, ...rest }) => {
     }
   }, [history.location.pathname])
 
-
+  useEffect(() => {
+    getChatMessages(chatId);
+  }, [customChatId])
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -50,7 +60,7 @@ const Chat = ({ onBack, customChatId = '', showHeader = true, ...rest }) => {
   return (
     <div className={`chat ${rest.className || ''}`}>
       {showHeader && <Header title={currentChatUser?.displayName} action={headerAction} size='xs' />}
-      <div className='chat__messagesWrapper'>
+      <div ref={containerRef} className='chat__messagesWrapper'>
         <ChatMessages messages={messages} isFetchedMessages={isFetchedMessages} isFetchingMessages={isFetchingMessages} />
       </div>
       <div className='chat__footer'>

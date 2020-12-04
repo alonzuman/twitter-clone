@@ -55,14 +55,7 @@
 }
 
 @media (max-width: 768px) {
-  .chat {
-    border-left: 1px solid var(--border-01);
-  }
-
   .chat__footer {
-    position: sticky;
-    right: 0;
-    bottom: 0;
     background-color: var(--bg-00);
     padding-bottom: calc(16px + env(safe-area-inset-bottom));
   }

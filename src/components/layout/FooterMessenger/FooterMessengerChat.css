@@ -1,3 +1,8 @@
 .footerMessengerChat {
   height: 448px;
 }
+
+.footerMessangerChat__chat {
+  grid-template-rows: 1fr auto;
+  height: 100%;
+}

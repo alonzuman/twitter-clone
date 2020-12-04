@@ -1,5 +1,4 @@
 .home {
   display: flex;
   flex: 12;
-  border-left: 1px solid var(--border-01);
 }

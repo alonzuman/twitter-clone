@@ -18,6 +18,7 @@
   padding: 8px 16px;
   padding-top: 4px;
   padding-right: 32px;
+  border: 1px solid var(--border-01);
 }
 
 .nav__menu {
