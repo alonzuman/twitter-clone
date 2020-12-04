@@ -169,10 +169,10 @@ textarea {
   color: var(--text-main)
 }
 
-@media (hover: hover) and (pointer: fine) {
+/* @media (hover: hover) and (pointer: fine) {
   .baseFocus:focus {
     outline: none;
     box-shadow: 0px 0px 4px var(--primary-dark);
   }
-}
+} */
 

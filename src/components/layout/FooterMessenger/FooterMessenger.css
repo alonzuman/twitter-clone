@@ -18,6 +18,11 @@
   transform: translateY(448px);
 }
 
+.footerMessenger__labelWrapper {
+  width: 100%;
+  flex: 8;
+}
+
 .footerMessenger__labelContainer {
   padding: 16px;
   align-items: center;
@@ -38,6 +43,7 @@
 
 .footerMessenger__backIcon {
   fill: var(--text-main);
+  flex: 2;
 }
 
 .footerMessenger__chatsList {

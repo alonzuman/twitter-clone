@@ -9,3 +9,7 @@
   flex: 8;
   max-width: 600px;
 }
+
+.tweetPage .tweetCard__container:first-of-type {
+  border-top: none;
+}

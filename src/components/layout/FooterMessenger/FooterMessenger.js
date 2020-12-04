@@ -65,9 +65,11 @@ const FooterMessenger = () => {
       <div className={`footerMessenger footerMessenger${isOpen ? '--open' : '--closed'}`}>
         <div className='footerMessenger__labelContainer'>
           {activeChat && <IconButton className='footerMessenger__backIconContainer' onClick={closeChat}><ArrowLeftIcon className='footerMessenger__backIcon' /></IconButton>}
-          <h2 onClick={isOpen ? closeChats : openChats} className='footerMessenger__label'>
-            {activeChat ? currentUsername : 'Messages'}
-          </h2>
+          <div onClick={isOpen ? closeChats : openChats} className='footerMessenger__labelWrapper'>
+            <h2 className='footerMessenger__label'>
+              {activeChat ? currentUsername : 'Messages'}
+            </h2>
+          </div>
         </div>
         <div className='footerMessenger__chats'>
           {!activeChat && <ChatsList className='footerMessenger__chatsList' showHeader={false} onClick={handleCardClick} />}
