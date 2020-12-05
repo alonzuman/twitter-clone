@@ -16,3 +16,9 @@
     border: none;
   }
 }
+
+@media (max-width: 768px) {
+  .feed {
+    max-width: none;
+  }
+}

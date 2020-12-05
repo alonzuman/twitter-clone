@@ -18,7 +18,7 @@
 
 .chatMessage__bubble--received {
   background-color: var(--primary-light);
-  color: var(--text-main);
+  color: #fff;
   font-weight: 500;
   font-size: 1rem;
   border-top-right-radius: 16px;

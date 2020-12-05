@@ -18,6 +18,7 @@ const FooterMessenger = () => {
   const currentUsername = currentChat?.participantsData?.find(user => user.uid !== uid)?.displayName;
   const { chats, isFetched, getChats } = useContext(MessagesContext);
   const history = useHistory();
+  const path = history.location.pathname.split('/')[1];
   const { width } = useWindowSize();
 
   history.listen(location => {
@@ -60,7 +61,7 @@ const FooterMessenger = () => {
     }
   }, [isOpen])
 
-  if (history.location.pathname.split('/')[1] !== 'messages' && isVisible && width > 500) {
+  if (path !== 'messages' && isVisible && width > 768) {
     return (
       <div className={`footerMessenger footerMessenger${isOpen ? '--open' : '--closed'}`}>
         <div className='footerMessenger__labelContainer'>

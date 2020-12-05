@@ -5,6 +5,7 @@ import TweetsList from '../../lists/TweetsList/TweetsList';
 import Header from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
 import './TweetPage.css';
+import TweetPageTweet from './TweetPageTweet';
 
 const TweetPage = ({ match: { params } }) => {
   const { fetchTweet, fetchTweets, fetchTweetReplies, isFetching, tweets: { currentTweet, currentTweetReplies } } = useContext(TweetsContext);
@@ -25,7 +26,7 @@ const TweetPage = ({ match: { params } }) => {
     <div className='tweetPage'>
       <div className='tweetPage__tweet'>
         <Header backButton title="Tweet" />
-        <TweetCard tweet={currentTweet} />
+        <TweetPageTweet tweet={currentTweet} />
         <TweetsList isLoading={isFetching} tweets={currentTweetReplies} />
       </div>
       <Sidebar />

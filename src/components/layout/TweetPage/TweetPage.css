@@ -13,3 +13,7 @@
 .tweetPage .tweetCard__container:first-of-type {
   border-top: none;
 }
+
+.tweetPage__tweet {
+  margin-bottom: 0;
+}

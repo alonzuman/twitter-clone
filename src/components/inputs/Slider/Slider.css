@@ -35,13 +35,14 @@
 
 /* The rangeSlider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 .rangeSlider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
+  -webkit-appearance: none;
   appearance: none;
-  width: 16px; /* Set a specific rangeSlider handle width */
-  height: 16px; /* rangeSlider handle height */
-  background: var(--primary-dark); /* Green background */
+  width: 16px;
+  height: 16px;
+  background: var(--primary-dark);
+  border: none;
   border-radius: 50%;
-  cursor: pointer; /* Cursor on hover */
+  cursor: pointer;
 }
 
 .rangeSlider::-webkit-slider-thumb:hover {
@@ -82,7 +83,7 @@
   position: absolute;
   height: 6px;
   border-radius: 12px;
-  background-color: var(--primary-light);
+  background-color: var(--primary-light-transparent);
 }
 
 .rangeSlider__customTrackFill {
