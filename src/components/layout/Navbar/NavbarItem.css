@@ -8,7 +8,7 @@
   border-radius: 64px;
   cursor: pointer;
   transition: .15s ease-in-out background-color, .25s ease-in-out fill;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   color: var(--text-dark);
   fill: var(--text-dark);
   text-decoration: inherit;
@@ -25,7 +25,7 @@
 
 .navbarItem__icon {
   fill: inherit;
-  line-height: 1;
+  line-height: 0;
 }
 
 .navbarItem__label {

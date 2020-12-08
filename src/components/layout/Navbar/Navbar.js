@@ -24,11 +24,11 @@ const Navbar = () => {
   const { width } = useWindowSize();
 
   const menu = [
-    { label: 'Home', selectedIcon: <HomeIcon size={28} color='nav__icon' />, icon: <HomeIcon size={32} className='nav__icon' />, path: '/home' },
-    // { label: 'Explore', selectedIcon: <NotificationsIcon size={32} color='nav__icon' />, icon: <NotificationsIcon size={32} clasName='nav__icon' />, path: '/explore' },
-    { label: 'Profile', selectedIcon: <ProfileIcon size={32} color='nav__icon' />, icon: <ProfileIcon size={32} className='nav__icon' />, path: `/${username}` },
-    { label: 'Messages', selectedIcon: <MessageIcon size={32} color='nav__icon' />, icon: <MessageIcon size={32} className='nav__icon' />, path: `/messages` },
-    { label: 'More', selectedIcon: <MoreIcon size={32} color='nav__icon' />, icon: <MoreIcon size={32} className='nav__icon' />, onClick: openMoreDialog },
+    { label: 'Home', selectedIcon: <HomeIcon size={28} color='nav__icon' />, icon: <HomeIcon size={28} className='nav__icon' />, path: '/home' },
+    // { label: 'Explore', selectedIcon: <NotificationsIcon size={28} color='nav__icon' />, icon: <NotificationsIcon size={28} clasName='nav__icon' />, path: '/explore' },
+    { label: 'Profile', selectedIcon: <ProfileIcon size={28} color='nav__icon' />, icon: <ProfileIcon size={28} className='nav__icon' />, path: `/${username}` },
+    { label: 'Messages', selectedIcon: <MessageIcon size={28} color='nav__icon' />, icon: <MessageIcon size={28} className='nav__icon' />, path: `/messages` },
+    { label: 'More', selectedIcon: <MoreIcon size={28} color='nav__icon' />, icon: <MoreIcon size={28} className='nav__icon' />, onClick: openMoreDialog },
   ]
 
   if (width > 500 && isAuth) {
