@@ -16,5 +16,39 @@
   margin-bottom: 0;
 }
 
-@media (max-width: 768px) {
+.tweetPageTweet {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-01);
+}
+
+.tweetPageTweet__header {
+  display: flex;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.tweetPageTweet__headerInfo {
+  margin-left: 8px;
+}
+
+.tweetPageTweet__headerInfo h3 {
+  color: var(--text-main);
+  font-size: 1.1rem;
+  margin-bottom: 2px;
+}
+
+.tweetPageTweet__headerInfo p {
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+.tweetPageTweet__body {
+  color: var(--text-main);
+  padding: 0px 12px 12px 12px;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.tweetPageTweet__footer {
+  border-top: 1px solid var(--border-01);
 }

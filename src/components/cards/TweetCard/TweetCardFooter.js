@@ -32,7 +32,7 @@ const TweetCardFooter = ({ id, likes = [], replies = 0, tweet }) => {
         <IconButton size='sm' onClick={handleHeartClick} className='iconButton--red'>
           {isLiked ? <HeartIconFilled className='tweetCardFooter__iconFilled' size={18} /> : <HeartIcon className='tweetCardFooter__icon' size={18} />}
         </IconButton>
-        <span className='tweetCardFooter__counter'>{likes?.length}</span>
+        <span className='tweetCardFooter__counter'>{likes?.length || 0}</span>
       </div>
     </footer>
   )
